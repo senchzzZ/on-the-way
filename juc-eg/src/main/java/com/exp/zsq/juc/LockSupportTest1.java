@@ -1,4 +1,4 @@
-package com.exp.zsq.juc.rtl;
+package com.exp.zsq.juc;
 
 import java.util.concurrent.locks.LockSupport;
 

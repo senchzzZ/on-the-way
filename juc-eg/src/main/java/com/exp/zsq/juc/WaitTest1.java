@@ -1,4 +1,4 @@
-package com.exp.zsq.juc.rtl;
+package com.exp.zsq.juc;
 
 /**
  * Created by zhaoshengqi on 2017/4/28.
