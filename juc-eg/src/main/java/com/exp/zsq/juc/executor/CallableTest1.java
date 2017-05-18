@@ -9,7 +9,7 @@ class MyCallable implements Callable {
 
     @Override
     public Integer call() throws Exception {
-        int sum    = 0;
+        int sum = 0;
         // 执行任务
         for (int i=0; i<100; i++)
             sum += i;
@@ -20,8 +20,7 @@ class MyCallable implements Callable {
 
 public class CallableTest1 {
 
-    public static void main(String[] args)
-            throws ExecutionException, InterruptedException{
+    public static void main(String[] args) throws ExecutionException, InterruptedException{
         //创建一个线程池
         ExecutorService pool = Executors.newSingleThreadExecutor();
         //创建有返回值的任务
