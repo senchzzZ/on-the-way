@@ -1,4 +1,4 @@
-package com.exp.zsq.juc;
+package com.exp.zsq.juc.reentrantlock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

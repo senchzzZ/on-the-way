@@ -1,11 +1,11 @@
-package com.exp.zsq.juc;
+package com.exp.zsq.juc.condition;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Created by zhaoshengqi on 2017/4/27.
+ * Created by zhaoshengqi on 2017/5/18.
  */
 class BoundedBuffer {
     final Lock lock = new ReentrantLock();
@@ -61,7 +61,7 @@ class BoundedBuffer {
     }
 }
 
-public class JucConditionExp {
+public class ConditionTest2 {
     private static BoundedBuffer bb = new BoundedBuffer();
 
     public static void main(String[] args) {

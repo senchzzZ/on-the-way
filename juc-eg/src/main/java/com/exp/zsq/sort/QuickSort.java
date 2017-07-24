@@ -1,6 +1,7 @@
 package com.exp.zsq.sort;
 
 /**
+ * 快速排序 时间复杂度O(N*lgN)
  * Created by zhaoshengqi on 2017/5/11.
  */
 public class QuickSort {

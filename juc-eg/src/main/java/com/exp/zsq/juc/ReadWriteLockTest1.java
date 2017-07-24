@@ -14,7 +14,7 @@ public class ReadWriteLockTest1 {
         User user = new User("Tommy", myCount);
 
         // 分别启动3个“读取账户金钱”的线程 和 3个“设置账户金钱”的线程
-        for (int i=0; i<3; i++) {
+        for (int i=0; i<10; i++) {
             user.getCash();
             user.setCash((i+1)*1000);
         }
@@ -33,37 +33,35 @@ class User {
     }
 
     public void getCash() {
-        new Thread() {
-            public void run() {
-                myLock.readLock().lock();
-                try {
-                    System.out.println(Thread.currentThread().getName() +" getCash start");
-                    myCount.getCash();
-                    Thread.sleep(1);
-                    System.out.println(Thread.currentThread().getName() +" getCash end");
-                } catch (InterruptedException e) {
-                } finally {
-                    myLock.readLock().unlock();
-                }
+        new Thread(()->{
+            myLock.readLock().lock();
+            try {
+                System.out.println(Thread.currentThread().getName() +" getCash start");
+                myCount.getCash();
+                Thread.sleep(1);
+                System.out.println(Thread.currentThread().getName() +" getCash end");
+            } catch (InterruptedException e) {
+            } finally {
+                myLock.readLock().unlock();
             }
-        }.start();
+        }).start();
+
     }
 
     public void setCash(final int cash) {
-        new Thread() {
-            public void run() {
-                myLock.writeLock().lock();
-                try {
-                    System.out.println(Thread.currentThread().getName() +" setCash start");
-                    myCount.setCash(cash);
-                    Thread.sleep(1);
-                    System.out.println(Thread.currentThread().getName() +" setCash end");
-                } catch (InterruptedException e) {
-                } finally {
-                    myLock.writeLock().unlock();
-                }
+        new Thread(() ->{
+            myLock.writeLock().lock();
+            try {
+                System.out.println(Thread.currentThread().getName() +" setCash start");
+                myCount.setCash(cash);
+                Thread.sleep(1);
+                System.out.println(Thread.currentThread().getName() +" setCash end");
+            } catch (InterruptedException e) {
+            } finally {
+                myLock.writeLock().unlock();
             }
-        }.start();
+        }).start();
+
     }
 }
 
