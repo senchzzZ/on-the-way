@@ -1,3 +1,3 @@
-# Thread JUC netty学习相关
+# Thread JUC netty
 netty e.g
 java.util.concurrent e.g
