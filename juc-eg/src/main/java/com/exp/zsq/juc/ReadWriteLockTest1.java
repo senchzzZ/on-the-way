@@ -83,12 +83,12 @@ class MyCount {
     }
 
     public int getCash() {
-        System.out.println(Thread.currentThread().getName() +" getCash cash="+ cash);
+        System.out.println(Thread.currentThread().getName() +" read cash="+ cash);
         return cash;
     }
 
     public void setCash(int cash) {
-        System.out.println(Thread.currentThread().getName() +" setCash cash="+ cash);
+        System.out.println(Thread.currentThread().getName() +" write cash="+ cash);
         this.cash = cash;
     }
 }

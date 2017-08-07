@@ -5,7 +5,7 @@ package com.exp.zsq.thread;
  */
 
 /**
- * 引起“当前线程”等待，直到另外一个线程调用notify()或notifyAll()唤醒该线程。
+ * wait()引起“当前线程”等待，直到另外一个线程调用notify()或notifyAll()唤醒该线程。
  * 换句话说，这个方法和wait(0)的效果一样！(补充，对于wait(long millis)方法，
  * 当millis为0时，表示无限等待，直到被notify()或notifyAll()唤醒)。
  * “当前线程”在调用wait()时，必须拥有该对象的同步锁。该线程调用wait()之后，

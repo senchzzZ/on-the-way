@@ -9,8 +9,8 @@ import java.util.concurrent.locks.Condition;
 class Depot3 {
     private int capacity;    // 仓库的容量
     private int size;        // 仓库的实际数量
-    private Lock lock;        // 独占锁
-    private Condition fullCondtion;            // 生产条件
+    private Lock lock;       // 独占锁
+    private Condition fullCondtion;         // 生产条件
     private Condition emptyCondtion;        // 消费条件
 
     public Depot3(int capacity) {
@@ -87,11 +87,10 @@ class Producer3 {
 
     // 消费产品：新建一个线程向仓库中生产产品。
     public void produce(final int val) {
-        new Thread() {
-            public void run() {
-                depot3.produce(val);
-            }
-        }.start();
+        new Thread(() ->{
+            depot3.produce(val);
+        }).start();
+
     }
 }
 
@@ -105,11 +104,11 @@ class Customer3 {
 
     // 消费产品：新建一个线程从仓库中消费产品。
     public void consume(final int val) {
-        new Thread() {
-            public void run() {
-                depot3.consume(val);
-            }
-        }.start();
+
+        new Thread(() -> {
+            depot3.consume(val);
+        }).start();
+
     }
 }
 
