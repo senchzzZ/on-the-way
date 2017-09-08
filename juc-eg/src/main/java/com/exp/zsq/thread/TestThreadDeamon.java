@@ -1,4 +1,4 @@
-package com.exp.zsq.juc;
+package com.exp.zsq.thread;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.exp.zsq.juc;
+package com.exp.zsq.juc.lock;
 
 import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.StampedLock;

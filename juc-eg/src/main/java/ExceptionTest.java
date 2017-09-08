@@ -1,5 +1,3 @@
-package com.exp.zsq.juc;
-
 /**
  * Created by zhaoshengqi on 2017/5/4.
  */

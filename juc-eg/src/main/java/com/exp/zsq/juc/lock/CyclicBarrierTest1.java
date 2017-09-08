@@ -1,4 +1,4 @@
-package com.exp.zsq.juc;
+package com.exp.zsq.juc.lock;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

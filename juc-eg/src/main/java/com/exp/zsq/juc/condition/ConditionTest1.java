@@ -40,6 +40,7 @@ public class ConditionTest1 {
 
         public void run() {
             lock.lock();    // 获取锁
+            System.out.println("got lock");
             try {
                 System.out.println(Thread.currentThread().getName()+" wakup others");
                 condition.signal();    // 唤醒“condition所在锁上的其它线程”

@@ -1,7 +1,4 @@
-package com.exp.zsq.juc.locksupport;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.exp.zsq.juc.lock.locksupport;
 
 /**
  * Created by zhaoshengqi on 2017/4/28.

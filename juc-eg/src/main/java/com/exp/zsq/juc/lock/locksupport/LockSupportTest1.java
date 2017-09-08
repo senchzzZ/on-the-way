@@ -1,4 +1,4 @@
-package com.exp.zsq.juc.locksupport;
+package com.exp.zsq.juc.lock.locksupport;
 
 import java.util.concurrent.locks.LockSupport;
 
