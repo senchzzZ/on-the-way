@@ -2,6 +2,8 @@ import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ThreadLocalRandom;
@@ -16,7 +18,7 @@ public class Tem {
 
     static transient volatile Node head;
 
-    public static void main(String[] args) throws InterruptedException, NoSuchFieldException, IllegalAccessException {
+    public static void main(String[] args) throws InterruptedException, NoSuchFieldException, IllegalAccessException, ParseException {
         //System.out.println(String.format("%.2f", new BigDecimal(0.04906205).doubleValue()*100));
 
         /*if(false && isExcute()){
@@ -217,9 +219,9 @@ public class Tem {
         System.out.println(i);
         System.out.println(size);*/
 
-        /*int i = 2;
+       /* int i = 2;
         int j = 2;
-
+        System.out.println(--i);
         int k = --i;
         int l = j--;
         System.out.println(k);
@@ -249,7 +251,7 @@ public class Tem {
 
 
 
-        Node head = new Node("item","next");
+        /*Node head = new Node("item","next");
 
         Node h = head,p = h;
 
@@ -268,9 +270,17 @@ public class Tem {
             System.out.println("q: "+q.toString());
             System.out.println("after cas,head: "+head);
         }
+*/
 
+       /* SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String dstr="2017-4-24 14:20:00";
+        java.util.Date date=sdf.parse(null);
+        System.out.println(date);*/
 
+       BigDecimal b = BigDecimal.ZERO;
+       b = b.add(new BigDecimal(0.0));
 
+        System.out.println(b==BigDecimal.ZERO);
 
 
     }
