@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -18,7 +19,7 @@ public class Tem {
 
     static transient volatile Node head;
 
-    public static void main(String[] args) throws InterruptedException, NoSuchFieldException, IllegalAccessException, ParseException {
+    public static void main(String[] args) throws Exception {
         //System.out.println(String.format("%.2f", new BigDecimal(0.04906205).doubleValue()*100));
 
         /*if(false && isExcute()){
@@ -269,20 +270,61 @@ public class Tem {
             System.out.println("p: "+p.toString());
             System.out.println("q: "+q.toString());
             System.out.println("after cas,head: "+head);
-        }
-*/
+        }*/
+
+        Unsafe u = getUnsafeInstance();
+
+        Node[] narr = new Node[500];
+        int b = u.arrayBaseOffset(Node[].class);
+        int s = u.arrayIndexScale(Node[].class);
+        System.out.println(b);
+        System.out.println(s);
+
+        int ASHIFT = 31 - Integer.numberOfLeadingZeros(s);
+
+        Node n = new Node("item","next");
+        int i = (((narr.length-1) & 1) << ASHIFT)+b;
+
+        System.out.println(i);
+        u.putOrderedObject(narr,i ,n);
+        System.out.println(Arrays.toString(narr));
+
+
+
+        /*int[] arr = {1,2,3,4,5,6,7,8,9,10,11};
+
+        int b = u.arrayBaseOffset(int[].class);
+        int s = u.arrayIndexScale(int[].class);
+
+        System.out.println(b);
+        System.out.println(s);
+
+        u.putInt(arr, (long)b+s*9, 1);
+
+        System.out.println(Arrays.toString(arr));
+        for(int i=0;i<arr.length;i++){
+            int v = u.getInt(arr, (long)b+s*i);
+            System.out.print(v+",");
+        }*/
+
 
        /* SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String dstr="2017-4-24 14:20:00";
         java.util.Date date=sdf.parse(null);
         System.out.println(date);*/
 
-       BigDecimal b = BigDecimal.ZERO;
+       /*BigDecimal b = BigDecimal.ZERO;
        b = b.add(new BigDecimal(0.0));
+        System.out.println(b==BigDecimal.ZERO);*/
 
-        System.out.println(b==BigDecimal.ZERO);
+        //System.out.println(Integer.toBinaryString(((-10 << 48))));
 
 
+        //System.out.println("2.24.1".compareTo("2.24.0"));
+        /*int r = 12;
+        r ^= r << 6; r ^= r >>> 21; r ^= r << 7;
+
+        System.out.println(100 & 0xffff);*/
     }
 
 
@@ -308,6 +350,13 @@ public class Tem {
         final boolean casItem(Object cmp, Object val) {
             // assert cmp == null || cmp.getClass() != Node.class;
             return UNSAFE.compareAndSwapObject(this, itemOffset, cmp, val);
+        }
+
+        final int arrayBaseOffset(Class<?> k){
+            return UNSAFE.arrayBaseOffset(k);
+        }
+        final int arrayIndexScale(Class<?> k){
+            return UNSAFE.arrayBaseOffset(k);
         }
 
 
@@ -353,19 +402,13 @@ public class Tem {
             this.next = next;
         }
     }
-    /*private static final sun.misc.Unsafe UNSAFE = sun.misc.Unsafe.getUnsafe();
-    static final int nextSecondarySeed() {
-        int r;
-        Thread t = Thread.currentThread();
-        if ((r = UNSAFE.getInt(t, SECONDARY)) != 0) {
-            r ^= r << 13;   // xorshift
-            r ^= r >>> 17;
-            r ^= r << 5;
-        }
 
-        UNSAFE.putInt(t, SECONDARY, r);
-        return r;
-    }*/
+    public static Unsafe getUnsafeInstance() throws Exception{
+        Field unsafeStaticField =
+                Unsafe.class.getDeclaredField("theUnsafe");
+        unsafeStaticField.setAccessible(true);
+        return (Unsafe) unsafeStaticField.get(Unsafe.class);
+    }
 
 
 }
