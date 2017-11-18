@@ -272,7 +272,7 @@ public class Tem {
             System.out.println("after cas,head: "+head);
         }*/
 
-        Unsafe u = getUnsafeInstance();
+        /*Unsafe u = getUnsafeInstance();
 
         Node[] narr = new Node[500];
         int b = u.arrayBaseOffset(Node[].class);
@@ -287,7 +287,17 @@ public class Tem {
 
         System.out.println(i);
         u.putOrderedObject(narr,i ,n);
-        System.out.println(Arrays.toString(narr));
+        System.out.println(Arrays.toString(narr));*/
+
+        int oldSum = 0, checkSum = 0;
+        do {
+            if (checkSum != 100)
+                checkSum += 10;
+            System.out.println("checkSum = "+checkSum+",oldSum = "+oldSum);
+        }while (oldSum != (oldSum = checkSum));
+
+        checkSum += 10;
+        System.out.println(oldSum != (oldSum = checkSum));
 
 
 
