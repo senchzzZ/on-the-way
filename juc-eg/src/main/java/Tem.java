@@ -341,6 +341,9 @@ public class Tem {
 
         String str2 = new StringBuilder("ja").append("va").toString();
         System.out.println(str2.intern()==str2);
+
+        String str3 = "i'm T";
+        System.out.println(str3.intern()==str1.intern());
     }
 
 
