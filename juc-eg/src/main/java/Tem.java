@@ -289,7 +289,7 @@ public class Tem {
         u.putOrderedObject(narr,i ,n);
         System.out.println(Arrays.toString(narr));*/
 
-        int oldSum = 0, checkSum = 0;
+       /* int oldSum = 0, checkSum = 0;
         do {
             if (checkSum != 100)
                 checkSum += 10;
@@ -297,7 +297,7 @@ public class Tem {
         }while (oldSum != (oldSum = checkSum));
 
         checkSum += 10;
-        System.out.println(oldSum != (oldSum = checkSum));
+        System.out.println(oldSum != (oldSum = checkSum));*/
 
 
 
@@ -335,6 +335,12 @@ public class Tem {
         r ^= r << 6; r ^= r >>> 21; r ^= r << 7;
 
         System.out.println(100 & 0xffff);*/
+
+        String str1 = new StringBuilder("i'm").append(" T").toString();
+        System.out.println(str1.intern()==str1);
+
+        String str2 = new StringBuilder("ja").append("va").toString();
+        System.out.println(str2.intern()==str2);
     }
 
 
