@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.RecursiveAction;
 import org.htmlparser.Parser;
+import org.htmlparser.filters.HasAttributeFilter;
+import org.htmlparser.filters.LinkStringFilter;
 import org.htmlparser.filters.NodeClassFilter;
+import org.htmlparser.filters.StringFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 
@@ -33,10 +36,13 @@ public class LinkFinderAction extends RecursiveAction {
                 List<RecursiveAction> actions = new ArrayList<RecursiveAction>();
                 URL uriLink = new URL(url);
                 Parser parser = new Parser(uriLink.openConnection());
-                NodeList list = parser.extractAllNodesThatMatch(new NodeClassFilter(LinkTag.class));
+                //NodeList list = parser.extractAllNodesThatMatch(new HasAttributeFilter("target","_blank"));
+                NodeList list = parser.extractAllNodesThatMatch(new LinkStringFilter("www.id97.com/movie"));
 
                 for (int i = 0; i < list.size(); i++) {
                     LinkTag extracted = (LinkTag) list.elementAt(i);
+
+                    System.out.println(extracted.getLink());
 
                     if (!extracted.extractLink().isEmpty()
                             && !cr.visited(extracted.extractLink())) {
@@ -53,6 +59,7 @@ public class LinkFinderAction extends RecursiveAction {
                 //invoke recursively
                 invokeAll(actions);
             } catch (Exception e) {
+                e.printStackTrace();
                 //ignore 404, unknown protocol or other server errors
             }
         }

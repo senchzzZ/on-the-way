@@ -1,6 +1,7 @@
 package com.exp.zsq.juc.executor.forkjoin;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -18,7 +19,7 @@ class SortTask extends RecursiveAction {
     final long[] array;
     final int lo;
     final int hi;
-    private int THRESHOLD = 0; //For demo only
+    private int THRESHOLD = 2; //For demo only
 
     public SortTask(long[] array) {
         this.array = array;
@@ -33,28 +34,31 @@ class SortTask extends RecursiveAction {
     }
 
     protected void compute() {
-        System.out.println(getPool().toString());
+        //System.out.println(getPool().toString());
         if (hi - lo < THRESHOLD)
             sequentiallySort(array, lo, hi);
         else {
             int pivot = partition(array, lo, hi);
+            //int pivot = hi >>> 1;
             System.out.println("\npivot = " + pivot + ", low = " + lo + ", high = " + hi);
-            System.out.println("array" + Arrays.toString(array));
+            //System.out.println("array" + Arrays.toString(array));
             invokeAll(new SortTask(array, lo, pivot - 1), new SortTask(array,
                     pivot + 1, hi));
         }
     }
 
     private int partition(long[] array, int lo, int hi) {
-        long x = array[hi];
+        long x = array[hi];//最高位值
         int i = lo - 1;
         for (int j = lo; j < hi; j++) {
             if (array[j] <= x) {
                 i++;
-                swap(array, i, j);
+                if (i != j)
+                    swap(array, i, j);
             }
         }
         swap(array, i + 1, hi);
+        System.out.println("\npartition , array = "+Arrays.toString(array)+",pivot = "+(i+1));
         return i + 1;
     }
 
@@ -67,6 +71,7 @@ class SortTask extends RecursiveAction {
     }
 
     private void sequentiallySort(long[] array, int lo, int hi) {
+        System.out.println("\nsequentiallySort,array = "+Arrays.toString(array)+",low = "+lo+",high = "+hi);
         Arrays.sort(array, lo, hi + 1);
     }
 }
@@ -87,14 +92,24 @@ public class TestForkJoinSort {
     @org.junit.Test
     public void testSort() throws Exception {
         ForkJoinTask sort = new SortTask(array);
-        ForkJoinPool fjpool = new ForkJoinPool(8);
+        //ForkJoinPool fjpool = new ForkJoinPool(4);
+        ForkJoinPool fjpool = ForkJoinPool.commonPool();
         fjpool.submit(sort);
-        System.out.println(fjpool.toString());
+        //System.out.println(fjpool.toString());
         fjpool.shutdown();
 
         fjpool.awaitTermination(30, TimeUnit.SECONDS);
 
+        System.out.println(Arrays.toString(array));
+
         assertTrue(checkSorted(array));
+    }
+
+    //@Test
+    public void test2(){
+        Arrays.sort(array);
+        System.out.println(Arrays.toString(array));
+
     }
 
     boolean checkSorted(long[] a) {
