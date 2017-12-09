@@ -48,6 +48,6 @@ public class WebCrawler7 implements LinkHandler {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        new WebCrawler7("http://www.baidu.com", 64).startCrawling();
+        new WebCrawler7("http://www.id97.com/", 64).startCrawling();
     }
 }
