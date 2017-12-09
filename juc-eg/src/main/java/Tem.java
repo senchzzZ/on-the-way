@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.LockSupport;
 
 import static java.text.Collator.SECONDARY;
 
@@ -336,14 +337,15 @@ public class Tem {
 
         System.out.println(100 & 0xffff);*/
 
-        String str1 = new StringBuilder("i'm").append(" T").toString();
+        /*String str1 = new StringBuilder("i'm").append(" T").toString();
         System.out.println(str1.intern()==str1);
 
         String str2 = new StringBuilder("ja").append("va").toString();
         System.out.println(str2.intern()==str2);
 
         String str3 = "i'm T";
-        System.out.println(str3.intern()==str1.intern());
+        System.out.println(str3.intern()==str1.intern());*/
+
     }
 
 
