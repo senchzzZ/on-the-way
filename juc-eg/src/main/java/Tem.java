@@ -1,3 +1,4 @@
+import org.apache.commons.collections4.CollectionUtils;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
@@ -9,6 +10,11 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.IntUnaryOperator;
 
 import static java.text.Collator.SECONDARY;
 
@@ -271,7 +277,7 @@ public class Tem {
             System.out.println("q: "+q.toString());
             System.out.println("after cas,head: "+head);
         }*/
-
+//----------------------------Unsafe---------------------------------------
         /*Unsafe u = getUnsafeInstance();
 
         Node[] narr = new Node[500];
@@ -300,11 +306,11 @@ public class Tem {
         System.out.println(oldSum != (oldSum = checkSum));*/
 
 
+        /*Unsafe u = getUnsafeInstance();
+        int[] arr = {1,2,3,4,5,6,7,8,9,10,11};
 
-        /*int[] arr = {1,2,3,4,5,6,7,8,9,10,11};
-
-        int b = u.arrayBaseOffset(int[].class);
-        int s = u.arrayIndexScale(int[].class);
+        int b = u.arrayBaseOffset(int[].class);//数组第一个元素的偏移地址
+        int s = u.arrayIndexScale(int[].class);//数组中元素的增量地址，也就是说每个元素的占位数
 
         System.out.println(b);
         System.out.println(s);
@@ -317,11 +323,7 @@ public class Tem {
             System.out.print(v+",");
         }*/
 
-
-       /* SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        String dstr="2017-4-24 14:20:00";
-        java.util.Date date=sdf.parse(null);
-        System.out.println(date);*/
+//------------------------------------------------------------------------
 
        /*BigDecimal b = BigDecimal.ZERO;
        b = b.add(new BigDecimal(0.0));
@@ -344,6 +346,20 @@ public class Tem {
 
         String str3 = "i'm T";
         System.out.println(str3.intern()==str1.intern());*/
+
+//-----------------------IntUnaryOperator---------------------------
+       /* IntUnaryOperator iu = x -> x*10;
+        System.out.println(iu.applyAsInt(100));*/
+
+        System.out.println(1<<16);
+
+        String str = "我我我\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02";
+        System.out.println(str);
+        String encStr = Base64.getEncoder().encodeToString(str.getBytes());
+        System.out.println(encStr);
+        String decStr = new String(Base64.getDecoder().decode(encStr));
+        System.out.println(decStr);
+        System.out.println(decStr.length());
 
 
     }
