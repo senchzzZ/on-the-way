@@ -351,16 +351,19 @@ public class Tem {
        /* IntUnaryOperator iu = x -> x*10;
         System.out.println(iu.applyAsInt(100));*/
 
-        System.out.println(1<<16);
-
-        String str = "我我我\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02";
+        /*String str = "我我我\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02";
         System.out.println(str);
         String encStr = Base64.getEncoder().encodeToString(str.getBytes());
         System.out.println(encStr);
         String decStr = new String(Base64.getDecoder().decode(encStr));
         System.out.println(decStr);
-        System.out.println(decStr.length());
+        System.out.println(decStr.length());*/
 
+        /*String manageTopic = "123,oij,2178d";
+        String[] manageTopics = manageTopic.split(",");
+        List<String> questionTags = Arrays.asList(manageTopics);
+
+        questionTags.forEach(System.out::println);*/
 
     }
 
