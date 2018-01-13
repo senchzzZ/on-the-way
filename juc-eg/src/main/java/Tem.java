@@ -6,10 +6,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ForkJoinTask;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -24,6 +21,8 @@ import static java.text.Collator.SECONDARY;
 public class Tem {
 
     static transient volatile Node head;
+
+    private static transient volatile int transferIndex;
 
     public static void main(String[] args) throws Exception {
         //System.out.println(String.format("%.2f", new BigDecimal(0.04906205).doubleValue()*100));
@@ -365,6 +364,48 @@ public class Tem {
 
         questionTags.forEach(System.out::println);*/
 
+
+        //int sizeCtl = -2;
+        //System.out.println(Integer.toBinaryString(sizeCtl >>> 16));
+        //System.out.println(Integer.numberOfLeadingZeros(16) );
+
+        System.out.println(Integer.toBinaryString(0x7fffffff));
+        int hashCode = new Node("node","next").hashCode();
+        int hash = (hashCode ^ (hashCode >>> 16)) & 0x7fffffff;
+        System.out.println("h = "+hashCode);
+        System.out.println("h = "+Integer.toBinaryString(hashCode));
+        System.out.println("h >>> 16 = "+Integer.toBinaryString(hashCode>>>16));
+        System.out.println("h ^ (h >>> 16) = "+Integer.toBinaryString(hashCode ^ (hashCode >>> 16)));
+        System.out.println("h ^ (h >>> 16) & HASH_BITS = "+Integer.toBinaryString(hashCode ^ (hashCode >>> 16) & 0x7fffffff));
+        for (int n = 1;n <=512*32;n <<= 1){
+            System.out.println("n = "+Integer.toBinaryString(n));
+            System.out.println(Integer.toBinaryString(Integer.numberOfLeadingZeros(n) ));
+            System.out.println("resizeStamp = "+Integer.toBinaryString(Integer.numberOfLeadingZeros(n) | (1 << 15)));
+            //System.out.println(Integer.numberOfLeadingZeros(i) | (1 << 15));
+            //System.out.println("sizeCtl = " + (Integer.numberOfLeadingZeros(i) | (1 << 15)<<16));
+            System.out.println("sizeCtl = " + Integer.toBinaryString((Integer.numberOfLeadingZeros(n) | (1 << 15)<<16)));
+            //int stride =  (i >>> 3) / 4;
+            //System.out.println(stride);
+            System.out.println("hash = "+Integer.toBinaryString(hash));
+            System.out.println("i = "+(hash & (n-1)));
+            System.out.println("runBit = "+ (hash & n));
+            System.out.println("after resize,runBit = "+ (hash & ((n << 1)-1)));
+            System.out.println();
+        }
+
+
+        /*transferIndex = 25;
+        int nextIndex;
+        nextIndex = transferIndex;
+        if (true){
+            transferIndex = 20;
+
+            int i = nextIndex-1;
+            System.out.println(i);
+        }*/
+
+        //System.out.println(Integer.toBinaryString(Integer.numberOfLeadingZeros(512) | (1 << (16 - 1))));
+        //System.out.println(Integer.numberOfLeadingZeros(64) | (1 << (16 - 1)));
     }
 
 
