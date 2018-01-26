@@ -369,7 +369,7 @@ public class Tem {
         //System.out.println(Integer.toBinaryString(sizeCtl >>> 16));
         //System.out.println(Integer.numberOfLeadingZeros(16) );
 
-        System.out.println(Integer.toBinaryString(0x7fffffff));
+        /*System.out.println(Integer.toBinaryString(0x7fffffff));
         int hashCode = new Node("node","next").hashCode();
         int hash = (hashCode ^ (hashCode >>> 16)) & 0x7fffffff;
         System.out.println("h = "+hashCode);
@@ -391,7 +391,7 @@ public class Tem {
             System.out.println("runBit = "+ (hash & n));
             System.out.println("after resize,runBit = "+ (hash & ((n << 1)-1)));
             System.out.println();
-        }
+        }*/
 
 
         /*transferIndex = 25;
@@ -406,6 +406,30 @@ public class Tem {
 
         //System.out.println(Integer.toBinaryString(Integer.numberOfLeadingZeros(512) | (1 << (16 - 1))));
         //System.out.println(Integer.numberOfLeadingZeros(64) | (1 << (16 - 1)));
+
+        /*CopyOnWriteArrayList list = new CopyOnWriteArrayList();
+        list.add("one");
+        list.add("two");
+        list.add("three");
+        list.add("four");
+        list.add("five");
+
+        list.add(3,"six");
+
+        list.forEach(System.out::println);*/
+
+        /*System.out.println(0x80000001);
+
+        ConcurrentSkipListSet set = new ConcurrentSkipListSet();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(4);
+        for (Iterator i = set.iterator();i.hasNext();){
+            System.out.println(i.next());
+        }*/
+
+
     }
 
 
