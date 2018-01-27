@@ -55,12 +55,12 @@ public class StampedLockTest {
             long stamp = sl.tryOptimisticRead(); //获得一个乐观读锁
             System.out.println(Thread.currentThread().getName() + " get OptimisticReadLock, stamp : "+stamp);
             double currentX = x, currentY = y; //将两个字段读入本地局部变量
-            if (!sl.validate(stamp)) { //检查发出乐观读锁后同时是否有其他写锁发生？
-                stamp = sl.readLock(); //如果没有，我们再次获得一个读悲观锁
+            if (!sl.validate(stamp)) { //检查发出乐观读锁后同时是否有其他写锁发生
+                stamp = sl.readLock(); //如果没有，我们再次获得一个悲观读锁
                 System.out.println(Thread.currentThread().getName() + " get readLock, stamp : "+stamp);
                 try {
                     currentX = x; // 将两个字段读入本地局部变量
-                    currentY = y; // 将两个字段读入本地局部变量
+                    currentY = y;
                 } finally {
                     sl.unlockRead(stamp);
                 }
@@ -79,7 +79,7 @@ public class StampedLockTest {
                     if (ws != 0L) { //这是确认转为写锁是否成功
                         stamp = ws; //如果成功 替换票据
                         x = newX; //进行状态改变
-                        y = newY; //进行状态改变
+                        y = newY;
                         break;
                     } else { //如果不能成功转换为写锁
                         sl.unlockRead(stamp); //我们显式释放读锁
