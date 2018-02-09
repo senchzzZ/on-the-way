@@ -17,7 +17,7 @@ public class SFileter {
         Set<String> set = readWordFromFile("keywords");
         addSensitiveWordToHashMap(set);
 
-        System.out.println(checkSensitiveWord("操fuck傻逼个狗", 0, 1));
+        System.out.println(checkSensitiveWord("我我操习近平", 0));
 
 
         /*String str = "习近平";
@@ -78,11 +78,11 @@ public class SFileter {
         }
     }
 
-    public static int checkSensitiveWord(String txt, int beginIndex, int matchType) {
+    public static int checkSensitiveWord(String txt, int beginIndex) {
         boolean flag = false;    //敏感词结束标识位：用于敏感词只有1位的情况
         int matchFlag = 0;     //匹配标识数默认为0
         char word = 0;
-        int maxMatchFlag = 0; //最大匹配度
+        int maxMatch = 0; //最大匹配度
         Map nowMap = sensitiveWordMap;
 
         for (int i = beginIndex; i < txt.length();) {
@@ -91,34 +91,33 @@ public class SFileter {
 
             if (MapUtils.isNotEmpty(nowMap)) {     //存在，则判断是否为最后一个
                 ++matchFlag;
-                ++i;//匹配成功才继续下一个字
+                ++i;
                 if ("1".equals(nowMap.get("isEnd"))) {       //如果为最后一个匹配规则
-                    flag = true;       //结束标志位为true
+                    flag = true;
                     nowMap = sensitiveWordMap;//从下一个字开始重新匹配
-                    if (maxMatchFlag < matchFlag)
-                        maxMatchFlag = matchFlag;
+                    if (maxMatch < matchFlag)
+                        maxMatch = matchFlag;
                     matchFlag = 0;
-                    if (-1 == matchType) {    //最小规则，直接返回,最大规则还需继续查找
-                        break;
-                    }
                 }
-            } else if (i == txt.length()-1)//剩最后一个字就不作匹配了
+
+            } else if (i == txt.length()-1)
                 break;
             else {     //不存在，从下一个字开始重新查找
                 nowMap = sensitiveWordMap;
                 matchFlag = 0;
-                ++i;
+                if (nowMap.get(word) == null)
+                    ++i;
             }
 
-            if (maxMatchFlag < matchFlag)
-                maxMatchFlag = matchFlag;
+            if (maxMatch < matchFlag)
+                maxMatch = matchFlag;
         }
 
 
-        if (maxMatchFlag < 2 && !flag) {
-            maxMatchFlag = 0;
+        if (maxMatch < 2 && !flag) {
+            maxMatch = 0;
         }
-        return maxMatchFlag;
+        return maxMatch;
     }
 
 }

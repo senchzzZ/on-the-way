@@ -12,7 +12,8 @@ public class ScheduledThreadPoolExecutorDemo {
     private static int sum;
     AtomicInteger taskNum = new AtomicInteger(0);
 
-    private static ScheduledExecutorService service = new ScheduledThreadPoolExecutor(Runtime.getRuntime().availableProcessors() - 1,
+    private static ScheduledExecutorService stpe = Executors.newSingleThreadScheduledExecutor();
+    private static ScheduledThreadPoolExecutor service = new ScheduledThreadPoolExecutor(Runtime.getRuntime().availableProcessors() - 1,
             new ThreadFactory() {
                 private final AtomicInteger mThreadNum = new AtomicInteger(0);
                 @Override
@@ -23,7 +24,6 @@ public class ScheduledThreadPoolExecutorDemo {
             });
 
     public static void main(String[] args) {
-
         service.scheduleWithFixedDelay(new MyRunnableScheduled(),1,5,TimeUnit.SECONDS);
         service.scheduleAtFixedRate(new MyRunnableScheduled(),1,5,TimeUnit.SECONDS);
 
