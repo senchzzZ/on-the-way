@@ -428,8 +428,17 @@ public class Tem {
         for (Iterator i = set.iterator();i.hasNext();){
             System.out.println(i.next());
         }*/
-        Object[] o = {1,2,3,4,5,6,7};
-        System.out.println(o.length);
+        /*SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long statTime = sdf.parse("2017-05"+"-01 00:00:00").getTime();
+        System.out.println(statTime);*/
+
+
+        try {
+            System.out.println(Integer.toBinaryString(-1));
+        }finally {
+            System.out.println(-1 << 29);
+       }
+
     }
 
 

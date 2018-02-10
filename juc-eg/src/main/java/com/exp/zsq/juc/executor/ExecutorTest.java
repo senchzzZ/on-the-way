@@ -1,9 +1,7 @@
 package com.exp.zsq.juc.executor;
 
 import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * Created by zhaoshengqi on 2017/4/17.
@@ -12,7 +10,13 @@ public class ExecutorTest {
     public static void main(String[] args) {
         Random random = new Random(47);
         //产生一个 ExecutorService 对象，这个对象带有一个大小为 poolSize 的线程池，若任务数量大于 poolSize ，任务会被放在一个 queue 里顺序执行。
-        ExecutorService executor = Executors.newFixedThreadPool(3);
+        //ExecutorService executor = Executors.newFixedThreadPool(3);
+        ExecutorService executor = new HookExecutorTest(3, 3,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>());
+       /* ThreadPoolExecutor tpe = new ThreadPoolExecutor(3, 3,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>());*/
         // 判断线程池可以结束
         int waitTime = 500;
         for (int i = 0; i < 10; i++) {

@@ -11,10 +11,10 @@ public class LinkedTransferQueueTest {
     private static LinkedTransferQueue queue = new LinkedTransferQueue();
 
     public static void main(String[] args) {
+       /* new Thread(new MyThread2()).start();
         new Thread(new MyThread2()).start();
         new Thread(new MyThread2()).start();
-        new Thread(new MyThread2()).start();
-        new Thread(new MyThread2()).start();
+        new Thread(new MyThread2()).start();*/
         new Thread(new MyThread2()).start();
 
         new Thread(new MyThread1()).start();
@@ -33,14 +33,18 @@ public class LinkedTransferQueueTest {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }*/
-                System.out.println(queue.poll());
+                try {
+                    System.out.println(queue.take());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
     static class MyThread2 implements Runnable{
         @Override
         public void run() {
-            for (int i=0;i<10000;i++){
+            for (int i=0;i<1000;i++){
                 /*try {
                     TimeUnit.MILLISECONDS.sleep(1);
                 } catch (InterruptedException e) {
