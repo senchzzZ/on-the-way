@@ -428,8 +428,8 @@ public class Tem {
         for (Iterator i = set.iterator();i.hasNext();){
             System.out.println(i.next());
         }*/
-
-
+        Object[] o = {1,2,3,4,5,6,7};
+        System.out.println(o.length);
     }
 
 

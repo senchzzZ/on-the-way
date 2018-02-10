@@ -1,5 +1,6 @@
 package com.exp.zsq.juc.condition;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -19,10 +20,10 @@ public class ConditionTest1 {
         lock.lock(); // 获取锁
         try {
             System.out.println(Thread.currentThread().getName()+" start ta");
-            ta.start();
+            //ta.start();
 
             System.out.println(Thread.currentThread().getName()+" block");
-            condition.await();    // 等待
+            condition.await(5, TimeUnit.SECONDS);    // 等待
 
             System.out.println(Thread.currentThread().getName()+" continue");
         } catch (InterruptedException e) {
