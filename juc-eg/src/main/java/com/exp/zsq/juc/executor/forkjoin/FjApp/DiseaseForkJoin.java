@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
-import com.lhjc.tj.service.disease.pojo.Disease;
 
 /**
  * @author wwq
@@ -48,9 +47,9 @@ public class DiseaseForkJoin extends RecursiveAction {
 	}
 
 	public static void main(String args[]){
-		List<Disease> diseList=new ArrayList();
+		List<KeyWordBean> diseList=new ArrayList();
 		for(int i=0;i<136;i++){
-			Disease dise=new Disease();
+			KeyWordBean dise=new KeyWordBean();
 			dise.setDisease_name("测试"+i+"测试"+i+"测试"+i);
 			dise.setSex("0,1");
 			dise.setMap_keys("wwq"+i+",wwq"+i+",wwq"+i);

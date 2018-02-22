@@ -8,21 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.lhjc.tj.dict.Dict;
-import com.lhjc.tj.dict.Sex;
-import com.lhjc.tj.service.disease.pojo.Disease;
-
 /**
  * @author wwq
  *
  */
 public class DiseaseTask{
-	@Autowired
-	private DiseaseImpl diseaseImpl;
 
-	private List<Disease> diseList;
+	private List<KeyWordBean> diseList;
 
 	private int size;
 
@@ -30,7 +22,7 @@ public class DiseaseTask{
 
 	private int end;
 
-	public DiseaseTask(List<Disease> diseList, int start, int end){
+	public DiseaseTask(List<KeyWordBean> diseList, int start, int end){
 		this.diseList=diseList;
 		this.start=start;
 		this.end=end;
@@ -41,7 +33,7 @@ public class DiseaseTask{
 		List<Map<String, Object>> diseMapList=new ArrayList<Map<String, Object>>();
 		for(String summ : summList){
 			for(int i=start; i<=end;i++){
-				Disease dise = diseList.get(i);
+				KeyWordBean dise = diseList.get(i);
 				//标题检索
 				if(summ.indexOf(dise.getDisease_name())!=-1){
 					if((","+dise.getSex()+",").indexOf(","+sex+",")==-1){
@@ -50,7 +42,7 @@ public class DiseaseTask{
 					Map<String, Object> diseMap=new HashMap<String, Object>();
 					diseMap.put("id", dise.getId());
 					diseMap.put("disease_name", dise.getDisease_name());
-					diseMap.put("sex", Sex.get(dise.getSex()));
+					diseMap.put("sex", dise.getSex());
 					diseMapList.add(diseMap);
 					continue;
 				}
@@ -65,7 +57,7 @@ public class DiseaseTask{
 							Map<String, Object> diseMap=new HashMap<String, Object>();
 							diseMap.put("id", dise.getId());
 							diseMap.put("disease_name", dise.getDisease_name());
-							diseMap.put("sex", Sex.get(dise.getSex()));
+							diseMap.put("sex", dise.getSex());
 							diseMapList.add(diseMap);
 							break;
 						}
