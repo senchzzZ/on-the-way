@@ -13,8 +13,13 @@ public class ForkJoinSimple {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ForkJoinPool fj = ForkJoinPool.commonPool();
 
-        ForkJoinTask<Integer> ft = fj.submit(new MyTask(0,1001));
-        System.out.println("result："+ft.get());
+        /*ForkJoinTask<Integer> ft = fj.submit(new MyTask(0,1001));
+        System.out.println("result："+ft.get());*/
+        fj.execute(new MyTask(0,1000));
+        fj.execute(new MyTask(0,1000));
+        fj.execute(new MyTask(0,1000));
+        fj.execute(new MyTask(0,1000));
+        System.out.println(fj.invoke(new MyTask(0,1000)));
 
     }
 
@@ -42,7 +47,7 @@ public class ForkJoinSimple {
                 MyTask t2 = new MyTask(point+1,endValue);
                 t1.fork();
                 t2.fork();
-                return t1.join()+t2.join();
+                return t2.join()+t1.join();
                 /*invokeAll(t1,t2);
                 try {
                     return get();

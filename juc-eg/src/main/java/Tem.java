@@ -434,7 +434,13 @@ public class Tem {
 
 
         try {
-            System.out.println(Integer.toBinaryString(-1));
+            System.out.println(Long.toBinaryString(-2));
+            System.out.println(Long.toBinaryString(-2<<48));
+            System.out.println(Long.toBinaryString(0xffffL<<48));
+            System.out.println(Long.toBinaryString(-2<<32));
+            System.out.println(Long.toBinaryString(0xffffL<<32));
+            System.out.println(Integer.parseInt("1110",2));
+            System.out.println(Long.toBinaryString(~(0xffffffffL)));
         }finally {
             System.out.println(-1 << 29);
        }
