@@ -432,7 +432,7 @@ public class Tem {
         long statTime = sdf.parse("2017-05"+"-01 00:00:00").getTime();
         System.out.println(statTime);*/
 
-
+/*
         try {
             System.out.println(Long.toBinaryString(-2));
             System.out.println(Long.toBinaryString(-2<<48));
@@ -444,6 +444,38 @@ public class Tem {
         }finally {
             System.out.println(-1 << 29);
        }
+
+       int n = 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        n = (n + 1) << 1;
+        System.out.println(n);*/
+
+        int r = -1640531527;
+        System.out.println(Integer.toBinaryString(r));
+        int m = 31;
+        /*int origin = r & m, k = origin;
+        System.out.println(origin);
+        System.out.println(k);
+        System.out.println((k = (k + 1) & m) == origin);
+        System.out.println(k);*/
+
+        for (int origin = r & m, k = origin, oldSum = 0, checkSum = 0; ; ){
+            System.out.println("k= "+k);
+            if ((k = (k + 1) & m) == origin) {
+                System.out.println("k= "+k);
+                System.out.println("origin= "+origin);
+                //TimeUnit.SECONDS.sleep(3);
+                break;
+            }
+
+        }
+
+
+
 
     }
 
