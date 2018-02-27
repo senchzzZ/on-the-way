@@ -456,14 +456,15 @@ public class Tem {
 
         int r = -1640531527;
         System.out.println(Integer.toBinaryString(r));
-        int m = 31;
-        /*int origin = r & m, k = origin;
-        System.out.println(origin);
+        int m = 63;
+        int origin = r & m, k = origin;
         System.out.println(k);
-        System.out.println((k = (k + 1) & m) == origin);
-        System.out.println(k);*/
 
-        for (int origin = r & m, k = origin, oldSum = 0, checkSum = 0; ; ){
+        long SP_MASK = 0xffffffffL;
+        long UC_MASK = ~SP_MASK;
+        System.out.println(Long.toBinaryString(UC_MASK));
+
+        /*for (int origin = r & m, k = origin, oldSum = 0, checkSum = 0; ; ){
             System.out.println("k= "+k);
             if ((k = (k + 1) & m) == origin) {
                 System.out.println("k= "+k);
@@ -472,7 +473,7 @@ public class Tem {
                 break;
             }
 
-        }
+        }*/
 
 
 

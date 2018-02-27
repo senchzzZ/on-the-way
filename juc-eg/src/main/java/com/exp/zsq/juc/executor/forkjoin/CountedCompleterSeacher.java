@@ -45,7 +45,7 @@ class Searcher<E> extends CountedCompleter<E> {
     }
 
     boolean matches(E e) {// return true if found
-        if((Integer) e == 2) {
+        if ((Integer) e == 2) {
             return true;
         }
         return false;
