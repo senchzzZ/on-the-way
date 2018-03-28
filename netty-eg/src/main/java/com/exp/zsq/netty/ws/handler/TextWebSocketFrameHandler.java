@@ -8,6 +8,8 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
+import java.util.Date;
+
 /**
  * Created by zhaoshengqi on 2017/4/14.
  */
@@ -34,7 +36,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
             channel.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " 加入"));
         }
         channels.add(ctx.channel());
-        System.out.println("Client:"+incoming.remoteAddress() +"加入");
+        System.out.println(new Date() + "Client:"+incoming.remoteAddress() +"加入");
     }
 
     @Override

@@ -454,7 +454,7 @@ public class Tem {
         n = (n + 1) << 1;
         System.out.println(n);*/
 
-        int r = -1640531527;
+        /*int r = -1640531527;
         System.out.println(Integer.toBinaryString(r));
         int m = 63;
         int origin = r & m, k = origin;
@@ -462,7 +462,7 @@ public class Tem {
 
         long SP_MASK = 0xffffffffL;
         long UC_MASK = ~SP_MASK;
-        System.out.println(Long.toBinaryString(UC_MASK));
+        System.out.println(Long.toBinaryString(UC_MASK));*/
 
         /*for (int origin = r & m, k = origin, oldSum = 0, checkSum = 0; ; ){
             System.out.println("k= "+k);
@@ -476,10 +476,16 @@ public class Tem {
         }*/
 
 
+        /*Integer[] a = new Integer[1 << 14];
+        for (int i = 0; i < 1 << 14; i++)
+            a[i] = new Random().nextInt();
 
+        Arrays.parallelSort(a);
+
+        //List<Integer> list = Arrays.asList(a);
+        Arrays.asList(a).forEach(j -> System.out.println(j));*/
 
     }
-
 
 
     private static boolean isExcute() {
@@ -487,7 +493,7 @@ public class Tem {
         return false;
     }
 
-    private static class Node{
+    private static class Node {
         private String node;
 
         private String next;
@@ -505,10 +511,11 @@ public class Tem {
             return UNSAFE.compareAndSwapObject(this, itemOffset, cmp, val);
         }
 
-        final int arrayBaseOffset(Class<?> k){
+        final int arrayBaseOffset(Class<?> k) {
             return UNSAFE.arrayBaseOffset(k);
         }
-        final int arrayIndexScale(Class<?> k){
+
+        final int arrayIndexScale(Class<?> k) {
             return UNSAFE.arrayBaseOffset(k);
         }
 
@@ -516,6 +523,7 @@ public class Tem {
         private static final sun.misc.Unsafe UNSAFE;
         private static final long itemOffset;
         private static final long nextOffset;
+
         //private static final long waiterOffset;
         static {
             try {
@@ -556,7 +564,7 @@ public class Tem {
         }
     }
 
-    public static Unsafe getUnsafeInstance() throws Exception{
+    public static Unsafe getUnsafeInstance() throws Exception {
         Field unsafeStaticField =
                 Unsafe.class.getDeclaredField("theUnsafe");
         unsafeStaticField.setAccessible(true);
