@@ -2,6 +2,7 @@ package com.exp.zsq.netty.echo;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -40,9 +41,19 @@ public class EchoClient {
                             socketChannel.pipeline().addFirst(new EchoClientHandler());
                         }
                     });
-            ChannelFuture f = b.connect().sync();
-            f.channel().closeFuture().sync();
 
+            ChannelFuture f = b.connect().sync();
+            f.addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture channelFuture) throws Exception {
+                    if (channelFuture.isSuccess()){
+                        System.out.println("connection established!");
+                    }else {
+                        System.out.println("connection attempt failed!");
+                    }
+                }
+            });
+            f.channel().closeFuture().sync();
         }finally {
             group.shutdownGracefully().sync();
         }

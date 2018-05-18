@@ -1,14 +1,11 @@
-package com.exp.zsq.juc.executor.forkjoin;
+package com.exp.zsq.juc.executor.forkjoin.crawler;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.RecursiveAction;
 import org.htmlparser.Parser;
-import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.LinkStringFilter;
-import org.htmlparser.filters.NodeClassFilter;
-import org.htmlparser.filters.StringFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 
@@ -19,6 +16,7 @@ public class LinkFinderAction extends RecursiveAction {
 
     private String url;
     private LinkHandler cr;
+
     /**
      * Used for statistics
      */
@@ -33,7 +31,7 @@ public class LinkFinderAction extends RecursiveAction {
     public void compute() {
         if (!cr.visited(url)) {
             try {
-                List<RecursiveAction> actions = new ArrayList<RecursiveAction>();
+                List<RecursiveAction> actions = new ArrayList<>();
                 URL uriLink = new URL(url);
                 Parser parser = new Parser(uriLink.openConnection());
                 //NodeList list = parser.extractAllNodesThatMatch(new HasAttributeFilter("target","_blank"));

@@ -294,7 +294,7 @@ public class Tem {
         u.putOrderedObject(narr,i ,n);
         System.out.println(Arrays.toString(narr));*/
 
-       /* int oldSum = 0, checkSum = 0;
+        /*int oldSum = 0, checkSum = 0;
         do {
             if (checkSum != 100)
                 checkSum += 10;
@@ -305,11 +305,11 @@ public class Tem {
         System.out.println(oldSum != (oldSum = checkSum));*/
 
 
-        /*Unsafe u = getUnsafeInstance();
+        Unsafe u = getUnsafeInstance();
         int[] arr = {1,2,3,4,5,6,7,8,9,10,11};
 
-        int b = u.arrayBaseOffset(int[].class);//数组第一个元素的偏移地址
-        int s = u.arrayIndexScale(int[].class);//数组中元素的增量地址，也就是说每个元素的占位数
+        int b = u.arrayBaseOffset(char[].class);//数组第一个元素的偏移地址
+        int s = u.arrayIndexScale(boolean[].class);//数组中元素的增量地址，也就是说每个元素的占位数
 
         System.out.println(b);
         System.out.println(s);
@@ -320,7 +320,7 @@ public class Tem {
         for(int i=0;i<arr.length;i++){
             int v = u.getInt(arr, (long)b+s*i);
             System.out.print(v+",");
-        }*/
+        }
 
 //------------------------------------------------------------------------
 
@@ -484,6 +484,13 @@ public class Tem {
 
         //List<Integer> list = Arrays.asList(a);
         Arrays.asList(a).forEach(j -> System.out.println(j));*/
+        /*int i = 2;
+        System.out.println("-------"+BigDecimal.valueOf(i).compareTo(BigDecimal.ZERO));*/
+        System.out.println();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf = new SimpleDateFormat("yyyy-MM");
+        Date date = sdf.parse("2018-03");
+        System.out.println(date);
 
     }
 
