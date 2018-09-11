@@ -1,8 +1,10 @@
 import org.apache.commons.collections4.CollectionUtils;
 import sun.misc.Unsafe;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -20,11 +22,13 @@ import static java.text.Collator.SECONDARY;
  */
 public class Tem {
 
-    static transient volatile Node head;
+    //static transient volatile Node head;
 
-    private static transient volatile int transferIndex;
+    //private static transient volatile int transferIndex;
 
-    public static void main(String[] args) throws Exception {
+    private static final Set<Integer>  integerSet = new HashSet<>();
+
+    public static void main(String[] args) throws UnsupportedEncodingException {
         //System.out.println(String.format("%.2f", new BigDecimal(0.04906205).doubleValue()*100));
 
         /*if(false && isExcute()){
@@ -305,7 +309,7 @@ public class Tem {
         System.out.println(oldSum != (oldSum = checkSum));*/
 
 
-        Unsafe u = getUnsafeInstance();
+        /*Unsafe u = getUnsafeInstance();
         int[] arr = {1,2,3,4,5,6,7,8,9,10,11};
 
         int b = u.arrayBaseOffset(char[].class);//数组第一个元素的偏移地址
@@ -320,7 +324,7 @@ public class Tem {
         for(int i=0;i<arr.length;i++){
             int v = u.getInt(arr, (long)b+s*i);
             System.out.print(v+",");
-        }
+        }*/
 
 //------------------------------------------------------------------------
 
@@ -486,16 +490,52 @@ public class Tem {
         Arrays.asList(a).forEach(j -> System.out.println(j));*/
         /*int i = 2;
         System.out.println("-------"+BigDecimal.valueOf(i).compareTo(BigDecimal.ZERO));*/
-        System.out.println();
+       /* System.out.println();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sdf = new SimpleDateFormat("yyyy-MM");
         Date date = sdf.parse("2018-03");
-        System.out.println(date);
+        System.out.println(date);*/
+
+        //System.out.println(1<<16);
+
+       /* Long h = 30000094l;
+        String s = "30000094";
+        System.out.println(h == Long.valueOf(s));
+        System.out.println(h == Long.valueOf(s).longValue());
+        System.out.println(h.equals(Long.valueOf(s)));
+        System.out.println(h == Long.parseLong(s));
+        System.out.println();
+        System.out.println(s == h.toString());
+        System.out.println(s.equals(h.toString()));
+        System.out.println();
+
+        Integer i = 54321;
+        String si = "54321";
+        System.out.println(i == Integer.valueOf(si));
+        System.out.println(i == Integer.parseInt(si));*/
+
+       /* int[] nums2 = //{};
+                {1,2,5,9,10,20};
+        int[] nums1 = //{1};
+                {5,15,16,21};
+
+        for (int i = 0; i < nums1.length; i++)
+            System.out.printf("%d ", nums1[i]);
+
+        int[] nums = Arrays.copyOf(nums1,nums1.length + nums2.length);
+        Arrays.asList(nums).forEach(System.out::print);
+        //System.arraycopy(nums,0,nums2,nums1.length,nums2.length);
+        System.arraycopy(nums2,0,nums,nums1.length,nums2.length);
+        System.out.println(nums);*/
+
 
     }
 
+    public static void a(){
+        throw new NullPointerException();
+    }
 
-    private static boolean isExcute() {
+    /*private static boolean isExcute() {
         System.out.println("excute!");
         return false;
     }
@@ -577,6 +617,7 @@ public class Tem {
         unsafeStaticField.setAccessible(true);
         return (Unsafe) unsafeStaticField.get(Unsafe.class);
     }
+*/
 
 
 }

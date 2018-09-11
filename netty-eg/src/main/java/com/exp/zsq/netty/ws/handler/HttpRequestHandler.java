@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.RandomAccessFile;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import static io.netty.handler.codec.http.HttpUtil.isKeepAlive;
 
@@ -36,6 +38,9 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+        Channel channel = ctx.channel();
+        ScheduledFuture sfuture = channel.eventLoop().schedule(() -> System.out.println("60 second later")
+        ,60, TimeUnit.SECONDS);
         if (wsUri.equalsIgnoreCase(request.uri())) {
             ctx.fireChannelRead(request.retain());                  //2
         } else {

@@ -11,10 +11,7 @@ public class BubbleSort {
     public static void main(String[] args) {
         int[] array = {6,4,3,7,8,2,1,2,23,34,67,86,21};
         sort(array);
-        for (int a:array){
-            System.out.print(a+",");
-
-        }
+        Arrays.stream(array).forEach(n -> System.out.print(n+","));
     }
     public static void sort(int[] a){
 

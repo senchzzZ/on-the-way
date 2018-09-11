@@ -7,16 +7,15 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 /**
  * Created by zhaoshengqi on 2017/4/14.
  */
 public class WebsocketChatServer {
 
-    private int port;
-
-    public WebsocketChatServer(int port) {
-        this.port = port;
-    }
+    private static final int PORT = 8090;
 
     public void run() throws Exception {
 
@@ -33,12 +32,15 @@ public class WebsocketChatServer {
             System.out.println("WebsocketChatServer 启动了");
 
             // 绑定端口，开始接收进来的连接
-            ChannelFuture f = b.bind(port).sync(); // (7)
+            ChannelFuture f = b.bind(PORT).sync(); // (7)
 
             // 等待服务器  socket 关闭 。
             // 在这个例子中，这不会发生，但你可以优雅地关闭你的服务器。
-            f.channel().closeFuture().sync();
-
+            //f.channel().closeFuture().sync();
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            while(true){
+                f.channel().writeAndFlush(in.readLine() + "\r\n");
+            }
         } finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
@@ -54,7 +56,7 @@ public class WebsocketChatServer {
         } else {
             port = 8090;
         }
-        new WebsocketChatServer(port).run();
+        new WebsocketChatServer().run();
 
     }
 }

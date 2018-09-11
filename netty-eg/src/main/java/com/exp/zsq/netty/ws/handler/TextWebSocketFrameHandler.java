@@ -1,8 +1,6 @@
 package com.exp.zsq.netty.ws.handler;
 
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.*;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
@@ -17,9 +15,11 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx,TextWebSocketFrame msg) throws Exception { // (1)
         Channel incoming = ctx.channel();
+        System.out.println("["+incoming.remoteAddress()+"] :" + msg.text());
         for (Channel channel : channels) {
             if (channel != incoming){
                 channel.writeAndFlush(new TextWebSocketFrame("[" + incoming.remoteAddress() + "]" + msg.text()));
@@ -36,7 +36,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
             channel.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " 加入"));
         }
         channels.add(ctx.channel());
-        System.out.println(new Date() + "Client:"+incoming.remoteAddress() +"加入");
+        System.out.println(new Date() + " Client:"+incoming.remoteAddress() +"加入");
     }
 
     @Override
@@ -52,7 +52,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception { // (5)
         Channel incoming = ctx.channel();
-        System.out.println("Client:"+incoming.remoteAddress()+"在线");
+        System.out.println("Client:"+incoming.localAddress()+"在线");
     }
 
     @Override

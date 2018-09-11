@@ -4,6 +4,8 @@ package com.exp.zsq.thread;
  * Created by zhaoshengqi on 2017/7/21.
  */
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * wait()引起“当前线程”等待，直到另外一个线程调用notify()或notifyAll()唤醒该线程。
  * 换句话说，这个方法和wait(0)的效果一样！(补充，对于wait(long millis)方法，
@@ -20,7 +22,7 @@ public class ThreadWN{
         synchronized (ta){
             ta.start();
             System.out.println(Thread.currentThread().getName()+" wait");
-            ta.wait(3000);
+            ta.wait();
             System.out.println(Thread.currentThread().getName()+" continue");
         }
     }
@@ -30,11 +32,16 @@ public class ThreadWN{
         }
         @Override
         public void run() {
-            //synchronized (this){
-            System.out.println(Thread.currentThread().getName() + ": call notify");
-            //notify();
-            while (true);
-            //}
+            synchronized (this){
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread().getName() + ": call notify");
+                notify();
+            //while (true);
+            }
         }
 
     }

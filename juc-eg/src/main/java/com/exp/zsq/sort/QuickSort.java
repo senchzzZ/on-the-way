@@ -1,7 +1,9 @@
 package com.exp.zsq.sort;
 
+import java.util.Arrays;
+
 /**
- * 快速排序 时间复杂度O(N*lgN)
+ * 快速排序 时间复杂度O(N*logN) log(N+1)~O(N2)
  * Created by zhaoshengqi on 2017/5/11.
  */
 public class QuickSort {
@@ -90,6 +92,28 @@ public class QuickSort {
         for (int i : sorted) {
             System.out.print(i + " ");
         }
+        System.out.println(binarySearch(sorted,20));
+        System.out.println(Integer.toBinaryString(286));
+    }
+
+    public static int binarySearch(int[] array, int key){
+        //Arrays.sort(array);
+        int low = 0;
+        int high = array.length-1;
+        while (low <= high){
+            int mid = (low + high) >>> 1;
+            int midVal = array[mid];
+            if (key > midVal){
+                low = mid;
+            } else if (key < midVal){
+                high = mid;
+            } else {
+                return midVal;
+            }
+
+        }
+
+        return 0;
     }
 
 }
