@@ -29,6 +29,21 @@ public class Tem {
     private static final Set<Integer>  integerSet = new HashSet<>();
 
     public static void main(String[] args) throws UnsupportedEncodingException {
+
+        List<Map<String, String>> body = new ArrayList<>();
+        Map<String, String> pair = new HashMap<>();
+        Map<String, String> tpair = new HashMap<>();
+        pair.put("name", "content");
+        pair.put("value", "content");
+        pair.put("type", "1");//（"1"：普通文本；"2": 数字[和数字有关的都是改类型] ；"3": 时间类型；）
+        body.add(pair);
+
+        tpair.put("name", "title");
+        tpair.put("value", "title");
+        tpair.put("type", "1");//（"1"：普通文本；"2": 数字[和数字有关的都是改类型] ；"3": 时间类型；）
+        body.add(tpair);
+        System.out.println(body);
+
         //System.out.println(String.format("%.2f", new BigDecimal(0.04906205).doubleValue()*100));
 
         /*if(false && isExcute()){
@@ -498,7 +513,7 @@ public class Tem {
 
         //System.out.println(1<<16);
 
-       /* Long h = 30000094l;
+        /*Long h = 30000094l;
         String s = "30000094";
         System.out.println(h == Long.valueOf(s));
         System.out.println(h == Long.valueOf(s).longValue());
@@ -527,7 +542,8 @@ public class Tem {
         //System.arraycopy(nums,0,nums2,nums1.length,nums2.length);
         System.arraycopy(nums2,0,nums,nums1.length,nums2.length);
         System.out.println(nums);*/
-
+        /*ArrayList list = new ArrayList<>(Arrays.asList( 1267766,1257745,1259019,1267696,1197048,1263612,1258732));
+        System.out.println(JSON.toJSONString(list));*/
 
     }
 

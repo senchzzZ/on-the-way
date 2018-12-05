@@ -38,6 +38,8 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+        //todo http handle
+
         Channel channel = ctx.channel();
         ScheduledFuture sfuture = channel.eventLoop().schedule(() -> System.out.println("60 second later")
         ,60, TimeUnit.SECONDS);
