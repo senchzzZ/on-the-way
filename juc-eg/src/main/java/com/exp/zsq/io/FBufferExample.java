@@ -12,7 +12,7 @@ import java.nio.channels.FileChannel;
 public class FBufferExample {
 
     public static void main(String[] args) throws IOException {
-        RandomAccessFile raf = new RandomAccessFile(new File("D:/gc.log"),"rw");
+        RandomAccessFile raf = new RandomAccessFile(new File("/Users/zhaoshengqi/Desktop/shortcut/bookmarks_2018_10_19.html"),"rw");
         FileChannel fileChannel = raf.getChannel();
         ByteBuffer buf = ByteBuffer.allocate(48);
         //CharBuffer charBuffer = CharBuffer.allocate(128);
