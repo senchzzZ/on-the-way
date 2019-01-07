@@ -33,6 +33,7 @@ public class DiseaseForkJoin extends RecursiveAction {
 	}
 	@Override
 	protected void compute() {
+		System.out.println(getPool());
 		if(task.getSize() < threshold){
 			diseMapList.addAll(task.reverseSearch(this.sex, searchContent));
 		}else{

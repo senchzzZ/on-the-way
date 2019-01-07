@@ -29,18 +29,19 @@ public class LinkFinderAction extends RecursiveAction {
 
     @Override
     public void compute() {
+        System.out.println(getPool());
         if (!cr.visited(url)) {
             try {
                 List<RecursiveAction> actions = new ArrayList<>();
                 URL uriLink = new URL(url);
                 Parser parser = new Parser(uriLink.openConnection());
                 //NodeList list = parser.extractAllNodesThatMatch(new HasAttributeFilter("target","_blank"));
-                NodeList list = parser.extractAllNodesThatMatch(new LinkStringFilter("www.id97.com/movie"));
+                NodeList list = parser.extractAllNodesThatMatch(new LinkStringFilter("www.dytt8.net/html"));
 
                 for (int i = 0; i < list.size(); i++) {
                     LinkTag extracted = (LinkTag) list.elementAt(i);
 
-                    System.out.println(extracted.getLink());
+                    //System.out.println(extracted.getLink());
 
                     if (!extracted.extractLink().isEmpty()
                             && !cr.visited(extracted.extractLink())) {
