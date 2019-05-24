@@ -13,9 +13,13 @@ public class ForkJoinSimple {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ForkJoinPool fj = ForkJoinPool.commonPool();
 
-        ForkJoinTask<Integer> ft = fj.submit(new MyTask(0,1100));
-        System.out.println(fj);
-        System.out.println("result："+ft.get());
+        for (;;) {
+            ForkJoinTask<Integer> ft = fj.submit(new MyTask(0,1100));
+            System.out.println(fj);
+            /*System.out.println(fj);
+            System.out.println("result："+ft.get());*/
+        }
+
         /*fj.execute(new MyTask(0,1000));
         fj.execute(new MyTask(0,1000));
         fj.execute(new MyTask(0,1000));
@@ -34,6 +38,11 @@ public class ForkJoinSimple {
 
         @Override
         protected Integer compute() {
+            try {
+                Thread.sleep(1000000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             if (endValue - startValue < 100){
                 System.out.println("可以计算的部分 startValue="+startValue+",endValue="+endValue);
                 //getPool().shutdownNow();

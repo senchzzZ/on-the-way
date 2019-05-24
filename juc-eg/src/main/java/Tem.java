@@ -30,7 +30,30 @@ public class Tem {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
 
-        List<Map<String, String>> body = new ArrayList<>();
+        Long h = 30000094l;
+        String s = "30000094";
+        System.out.println(h == Long.valueOf(s));
+        System.out.println(h == Long.valueOf(s).longValue());
+        System.out.println(h.equals(Long.valueOf(s)));
+        System.out.println(h == Long.parseLong(s));
+        System.out.println();
+        System.out.println(s == h.toString());
+        System.out.println(s.equals(h.toString()));
+        System.out.println();
+
+        Integer i = 54321;
+        String si = "54321";
+        System.out.println(i == Integer.valueOf(si));
+        System.out.println(i == Integer.parseInt(si));
+
+        /*Set<Long> set = new HashSet<>();
+        List<Long> list1 = new ArrayList<>(Arrays.asList(12345l,11111l,222222l,33333l,44444l));
+        List<Long> list2 = new ArrayList<>(Arrays.asList(12345l,11111l,222222l,33333l,44444l,55555l));
+        set.addAll(list1);
+        set.addAll(list2);
+        System.out.println(set);*/
+
+        /*List<Map<String, String>> body = new ArrayList<>();
         Map<String, String> pair = new HashMap<>();
         Map<String, String> tpair = new HashMap<>();
         pair.put("name", "content");
@@ -42,7 +65,7 @@ public class Tem {
         tpair.put("value", "title");
         tpair.put("type", "1");//（"1"：普通文本；"2": 数字[和数字有关的都是改类型] ；"3": 时间类型；）
         body.add(tpair);
-        System.out.println(body);
+        System.out.println(body);*/
 
         //System.out.println(String.format("%.2f", new BigDecimal(0.04906205).doubleValue()*100));
 
