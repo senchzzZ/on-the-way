@@ -16,7 +16,7 @@ public class CyclicBarrierTest1 {
         cb = new CyclicBarrier(SIZE);
 
         // 新建5个任务
-        for(int i=0; i<SIZE; i++){
+        for(int i=0; i<10; i++){
             new InnerThread().start();
             TimeUnit.SECONDS.sleep(1);
         }

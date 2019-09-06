@@ -1,3 +1,8 @@
+import com.exp.zsq.defaultMethod.TestDefaultMethod;
+import com.exp.zsq.defaultMethod.TestDefaultMethodImpl;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import sun.misc.Unsafe;
 
@@ -28,9 +33,45 @@ public class Tem {
 
     private static final Set<Integer>  integerSet = new HashSet<>();
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void changePrim(Integer a,GeneralBean bean) {
+        a = 299;
+        bean.setB("C");
+        System.out.println(a);
+        //System.out.println(bean);
+    }
 
-        Long h = 30000094l;
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    static class GeneralBean{
+        String a;
+        String b;
+    }
+
+    public static void main(String[] args)  {
+
+        /*TestDefaultMethod t = new TestDefaultMethodImpl();
+        t.getResult();*/
+
+        /*Integer i = 200;
+        GeneralBean bean = new GeneralBean("a","b");
+        changePrim(i, bean);
+        System.out.println(i);*/
+        //System.out.println(bean);
+        Integer a = 128;
+        Integer b = 128;
+        int c = 128;
+        Integer d = 127;
+        Integer e = 127;
+        System.out.println(a == b);
+        System.out.println(a == c);
+        System.out.println(d == e);
+
+        /*Integer a = 12321;
+        System.out.println(a);*/
+        //System.out.println(Integer.valueOf(" ",36));
+
+        /*Long h = 30000094l;
         String s = "30000094";
         System.out.println(h == Long.valueOf(s));
         System.out.println(h == Long.valueOf(s).longValue());
@@ -44,7 +85,7 @@ public class Tem {
         Integer i = 54321;
         String si = "54321";
         System.out.println(i == Integer.valueOf(si));
-        System.out.println(i == Integer.parseInt(si));
+        System.out.println(i == Integer.parseInt(si));*/
 
         /*Set<Long> set = new HashSet<>();
         List<Long> list1 = new ArrayList<>(Arrays.asList(12345l,11111l,222222l,33333l,44444l));
@@ -70,7 +111,7 @@ public class Tem {
         //System.out.println(String.format("%.2f", new BigDecimal(0.04906205).doubleValue()*100));
 
         /*if(false && isExcute()){
-            
+
         }*/
        /* int i=0;
         int j=0;
