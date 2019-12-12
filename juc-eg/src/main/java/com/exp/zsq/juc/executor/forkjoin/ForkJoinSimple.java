@@ -1,9 +1,7 @@
 package com.exp.zsq.juc.executor.forkjoin;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
-import java.util.concurrent.RecursiveTask;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by zhaoshengqi on 2017/11/22.
@@ -13,18 +11,18 @@ public class ForkJoinSimple {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ForkJoinPool fj = ForkJoinPool.commonPool();
 
-        for (;;) {
+        /*for (;;) {
             ForkJoinTask<Integer> ft = fj.submit(new MyTask(0,1100));
             System.out.println(fj);
-            /*System.out.println(fj);
-            System.out.println("result："+ft.get());*/
-        }
+            *//*System.out.println(fj);
+            System.out.println("result："+ft.get());*//*
+        }*/
 
         /*fj.execute(new MyTask(0,1000));
         fj.execute(new MyTask(0,1000));
         fj.execute(new MyTask(0,1000));
-        fj.execute(new MyTask(0,1000));
-        System.out.println(fj.invoke(new MyTask(0,1000)));*/
+        fj.execute(new MyTask(0,1000));*/
+        System.out.println(fj.invoke(new MyTask(0,1000)));
 
     }
 
@@ -35,11 +33,16 @@ public class ForkJoinSimple {
             this.startValue = s;
             this.endValue = e;
         }
+        private static AtomicInteger tgCount = new AtomicInteger(0);
 
         @Override
         protected Integer compute() {
+            /*Thread t = Thread.currentThread();
+            System.out.println(((ForkJoinWorkerThread)t).getPool());*/
+            System.out.println(getPool());
+
             try {
-                Thread.sleep(1000000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -51,7 +54,8 @@ public class ForkJoinSimple {
                     total += i;
                 }
                 return total;
-            }else {
+            } else {
+                System.out.println("任务分割~~~~" + tgCount.incrementAndGet());
                 int point = (startValue+endValue)/2;
                 MyTask t1 = new MyTask(startValue,point);
                 MyTask t2 = new MyTask(point+1,endValue);

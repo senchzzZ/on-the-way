@@ -27,16 +27,23 @@ import static java.text.Collator.SECONDARY;
  */
 public class Tem {
 
+    String str = new String("init");
     //static transient volatile Node head;
 
     //private static transient volatile int transferIndex;
 
     private static final Set<Integer>  integerSet = new HashSet<>();
 
-    public static void changePrim(Integer a,GeneralBean bean) {
-        a = 299;
+    public static void changePrim(Integer a,GeneralBean bean,String s,int b,String global) {
+        a = Integer.valueOf(299);
+        s = "abc";
+        b = 10000;
         bean.setB("C");
+        global = "cccc";
         System.out.println(a);
+        System.out.println(b);
+        System.out.println(s);
+        System.out.println(global);
         //System.out.println(bean);
     }
 
@@ -52,20 +59,31 @@ public class Tem {
 
         /*TestDefaultMethod t = new TestDefaultMethodImpl();
         t.getResult();*/
-
-        /*Integer i = 200;
+        Tem tem = new Tem();
+        Integer i = 200;
+        String z = "zzz";
+        int b = 2000;
         GeneralBean bean = new GeneralBean("a","b");
-        changePrim(i, bean);
-        System.out.println(i);*/
-        //System.out.println(bean);
-        Integer a = 128;
+        changePrim(i, bean,z,b,tem.str);
+
+        System.out.println(z);
+        System.out.println(i);
+        System.out.println(b);
+        System.out.println(tem.str);
+        System.out.println(bean);
+
+        Long a = Long.MAX_VALUE;
+        Long a1 = 1l;
+        System.out.println(a);
+        System.out.println(Integer.MAX_VALUE);
+        /*Integer a = 128;
         Integer b = 128;
         int c = 128;
         Integer d = 127;
         Integer e = 127;
         System.out.println(a == b);
         System.out.println(a == c);
-        System.out.println(d == e);
+        System.out.println(d == e);*/
 
         /*Integer a = 12321;
         System.out.println(a);*/

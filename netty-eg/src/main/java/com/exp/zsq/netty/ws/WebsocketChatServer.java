@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
  */
 public class WebsocketChatServer {
 
-    private static final int PORT = 8090;
+    private static final int PORT = 8091;
 
     public void run() throws Exception {
 
