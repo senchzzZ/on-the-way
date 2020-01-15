@@ -1,4 +1,4 @@
-package com.exp.zsq.compare;
+package com.exp.zsq.domain;
 
 import lombok.Data;
 

@@ -41,10 +41,11 @@ public class Tem {
         bean.setB("C");
         global = "cccc";
         System.out.println(a);
-        System.out.println(b);
+        bean = new GeneralBean("c","d");
         System.out.println(s);
+        System.out.println(b);
         System.out.println(global);
-        //System.out.println(bean);
+        System.out.println();
     }
 
     @Data
@@ -66,8 +67,8 @@ public class Tem {
         GeneralBean bean = new GeneralBean("a","b");
         changePrim(i, bean,z,b,tem.str);
 
-        System.out.println(z);
         System.out.println(i);
+        System.out.println(z);
         System.out.println(b);
         System.out.println(tem.str);
         System.out.println(bean);

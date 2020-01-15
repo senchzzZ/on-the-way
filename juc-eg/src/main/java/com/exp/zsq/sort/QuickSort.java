@@ -63,16 +63,43 @@ public class QuickSort {
      *
      * @param array
      * @param low
-     * @param heigh
+     * @param high
      * @return
      */
-    private static int[] quickSort(int[] array, int low, int heigh) {
-        if (low < heigh) {
-            int division = partition(array, low, heigh);
+    private static int[] quickSort(int[] array, int low, int high) {
+        if (low < high) {
+
+            int division = partition(array, low, high);
             quickSort(array, low, division - 1);
-            quickSort(array, division + 1, heigh);
+            quickSort(array, division + 1, high);
         }
         return array;
+    }
+
+    private static void quickSort1(int[] array, int low, int high) {
+        if (low > high)
+            return;
+
+        int base = array[low];
+        int left = low, right = high;
+        mark++;
+        System.out.println("正在进行第" + mark + "轮分隔，区域：" + left + "-" + right);
+        while (left != right) {
+            while (left < right && array[right] >= base) {
+                right--;
+                System.out.println("从右往左找比" + base + "小的，指针变动：" + left + "-" + right);
+            }
+            //swap(array, left, right);
+            while (left < right && array[left] <= base) {
+                left++;
+                System.out.println("从左往右找比" + base + "大的，指针变动：" + left + "-" + right);
+            }
+            swap(array, left, right);
+        }
+        array[low] = array[left];
+        array[left] = base;
+        quickSort1(array, low, left - 1);
+        quickSort1(array, left + 1, high);
     }
 
     /**
@@ -85,15 +112,28 @@ public class QuickSort {
         return quickSort(array, 0, array.length - 1);
     }
 
+    public static void sort1(int[] array) {
+        quickSort1(array, 0, array.length - 1);
+    }
+
     public static void main(String[] args) {
         int[] array = { 3, 5, 2, 6, 2,1,20,44,55,23,69,234 };
-        int[] sorted = sort(array);
-        System.out.println("最终结果");
+        sort1(array);
+        System.out.println("最终结果:");
+        for (int i : array) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+
+        /*int[] array1 = { 3, 5, 2, 6, 2,1,20,44,55,23,69,234 };
+        int[] sorted = sort(array1);
+        System.out.println("最终结果:");
         for (int i : sorted) {
             System.out.print(i + " ");
         }
-        System.out.println(binarySearch(sorted,20));
-        System.out.println(Integer.toBinaryString(286));
+        System.out.println();*/
+        /*System.out.println(binarySearch(sorted,20));
+        System.out.println(Integer.toBinaryString(286));*/
     }
 
     public static int binarySearch(int[] array, int key){
