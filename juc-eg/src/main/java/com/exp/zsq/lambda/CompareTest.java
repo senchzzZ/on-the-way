@@ -1,4 +1,6 @@
-package com.exp.zsq.compare;
+package com.exp.zsq.lambda;
+
+import com.exp.zsq.domain.CompareBean;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -9,6 +9,7 @@ import sun.misc.Unsafe;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,10 +42,11 @@ public class Tem {
         bean.setB("C");
         global = "cccc";
         System.out.println(a);
-        System.out.println(b);
+        bean = new GeneralBean("c","d");
         System.out.println(s);
+        System.out.println(b);
         System.out.println(global);
-        //System.out.println(bean);
+        System.out.println();
     }
 
     @Data
@@ -55,7 +57,14 @@ public class Tem {
         String b;
     }
 
+    public static void testParams(List list) {
+        System.out.println(list);
+    }
+
     public static void main(String[] args)  {
+
+        List<String> list = null;
+        testParams(list);
 
         /*TestDefaultMethod t = new TestDefaultMethodImpl();
         t.getResult();*/
@@ -66,16 +75,17 @@ public class Tem {
         GeneralBean bean = new GeneralBean("a","b");
         changePrim(i, bean,z,b,tem.str);
 
-        System.out.println(z);
         System.out.println(i);
+        System.out.println(z);
         System.out.println(b);
         System.out.println(tem.str);
         System.out.println(bean);
 
-        Long a = Long.MAX_VALUE;
+        /*Long a = Long.MAX_VALUE;
         Long a1 = 1l;
         System.out.println(a);
-        System.out.println(Integer.MAX_VALUE);
+        System.out.println(a/100000/3600/24/365);
+        System.out.println(Integer.MAX_VALUE/100000/3600/24/365);*/
         /*Integer a = 128;
         Integer b = 128;
         int c = 128;
