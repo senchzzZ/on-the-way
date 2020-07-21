@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
-import sun.misc.Unsafe;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;

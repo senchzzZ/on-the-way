@@ -20,10 +20,10 @@ public class ConditionTest1 {
         lock.lock(); // 获取锁
         try {
             System.out.println(Thread.currentThread().getName()+" start ta");
-            //ta.start();
+            ta.start();
 
             System.out.println(Thread.currentThread().getName()+" block");
-            condition.await(5, TimeUnit.SECONDS);    // 等待
+            condition.await();    // 等待
 
             System.out.println(Thread.currentThread().getName()+" continue");
         } catch (InterruptedException e) {
@@ -41,9 +41,9 @@ public class ConditionTest1 {
 
         public void run() {
             lock.lock();    // 获取锁
-            System.out.println("got lock");
+            System.out.println(Thread.currentThread().getName() + " got lock");
             try {
-                System.out.println(Thread.currentThread().getName()+" wakup others");
+                System.out.println(Thread.currentThread().getName()+" wakeup others");
                 condition.signal();    // 唤醒“condition所在锁上的其它线程”
             } finally {
                 lock.unlock();    // 释放锁

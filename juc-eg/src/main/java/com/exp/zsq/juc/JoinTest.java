@@ -44,9 +44,9 @@ public class JoinTest {
             }
             System.out.println("T4 start!");
         });
-        t1.start();
-        t2.start();
-        t3.start();
         t4.start();
+        t1.start();
+        t3.start();
+        t2.start();
     }
 }
