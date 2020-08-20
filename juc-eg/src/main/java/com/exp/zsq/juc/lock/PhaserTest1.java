@@ -12,37 +12,36 @@ import java.util.concurrent.TimeUnit;
 public class PhaserTest1 {
 
     private static Phaser ps;
-    private static int SIZE = 5;
+    private static int SIZE = 10;
 
     public static void main(String[] args) throws InterruptedException {
-        /*List<Runnable> list = new ArrayList<>();
-        for (int i=0;i<10;i++){
-            list.add(new MyTask(i));
+        ps = new Phaser(SIZE);
+        List<Runnable> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add(new MyTask());
         }
-        runTasks(list);*/
+        //runTasks(list);
+        startTasks(list, 3);
 
-        //ps = new Phaser(SIZE);
-        ps = new Phaser(SIZE){
+        /*ps = new Phaser(SIZE) {
             protected boolean onAdvance(int phase, int registeredParties) {
-                System.out.println("phaser is finished,phase = "+phase+",registeredParties="+registeredParties);
+                System.out.println("phaser is finished,phase = " + phase + ",registeredParties=" + registeredParties);
                 //return true;
-                return super.onAdvance(phase,registeredParties);
+                return super.onAdvance(phase, registeredParties);
             }
         };
-        for (int i=0;i<SIZE;i++){
-            new Thread(new MyTask(),"Thread_"+i).start();
-            //TimeUnit.SECONDS.sleep(1);
-
+        for (int i = 0; i < SIZE; i++) {
+            new Thread(new MyTask(), "Thread_" + i).start();
         }
         TimeUnit.SECONDS.sleep(1);
-        //ps.arrive();
+        ps.arrive();
         //ps.arriveAndDeregister();
         System.out.println("main finished");
-        System.out.println(ps.isTerminated());
+        System.out.println(ps.isTerminated());*/
 
     }
 
-    static class MyTask implements Runnable{
+    static class MyTask implements Runnable {
 
         @Override
         public void run() {
@@ -54,6 +53,7 @@ public class PhaserTest1 {
         }
     }
 
+    //替代CountDownLatch
     static void runTasks(List<Runnable> tasks) {
         final Phaser phaser = new Phaser(1); // "1" to register self
         // create and start threads
@@ -74,7 +74,8 @@ public class PhaserTest1 {
         phaser.arriveAndDeregister();
     }
 
-    void startTasks(List<Runnable> tasks, final int iterations) {
+    //使用多阶
+    static void startTasks(List<Runnable> tasks, final int iterations) {
         final Phaser phaser = new Phaser() {
             protected boolean onAdvance(int phase, int registeredParties) {
                 return phase >= iterations || registeredParties == 0;

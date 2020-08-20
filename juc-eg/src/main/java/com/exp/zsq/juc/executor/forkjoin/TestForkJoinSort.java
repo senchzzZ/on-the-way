@@ -58,7 +58,7 @@ class SortTask extends RecursiveAction {
             }
         }
         swap(array, i + 1, hi);
-        System.out.println("\npartition , array = "+Arrays.toString(array)+",pivot = "+(i+1));
+        System.out.println("\npartition , array = " + Arrays.toString(array) + ",pivot = " + (i + 1));
         return i + 1;
     }
 
@@ -71,7 +71,7 @@ class SortTask extends RecursiveAction {
     }
 
     private void sequentiallySort(long[] array, int lo, int hi) {
-        System.out.println("\nsequentiallySort,array = "+Arrays.toString(array)+",low = "+lo+",high = "+hi);
+        System.out.println("\nsequentiallySort,array = " + Arrays.toString(array) + ",low = " + lo + ",high = " + hi);
         Arrays.sort(array, lo, hi + 1);
     }
 }
@@ -84,7 +84,7 @@ public class TestForkJoinSort {
     @Before
     public void setUp() {
         for (int i = 0; i < array.length; i++) {
-            array[i] = rand.nextLong()%100; //For demo only
+            array[i] = rand.nextLong() % 100; //For demo only
         }
         System.out.println("Initial Array: " + Arrays.toString(array));
     }
@@ -106,7 +106,7 @@ public class TestForkJoinSort {
     }
 
     //@Test
-    public void test2(){
+    public void test2() {
         Arrays.sort(array);
         System.out.println(Arrays.toString(array));
 

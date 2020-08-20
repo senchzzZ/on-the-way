@@ -12,11 +12,9 @@ public class CyclicBarrierTest2 {
     private static CyclicBarrier cyclicBarrier;
 
     public static void main(String[] args) {
-        cyclicBarrier = new CyclicBarrier(SIZE, new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(Thread.currentThread().getName() + " barrierAction finish");
-            }
+        cyclicBarrier = new CyclicBarrier(SIZE, () -> {
+            //触发barrier时执行的函数
+            System.out.println(Thread.currentThread().getName() + " barrierAction finish");
         });
         for (int i=0;i<SIZE;i++){
 
@@ -33,7 +31,7 @@ public class CyclicBarrierTest2 {
                 cyclicBarrier.await();
                 TimeUnit.SECONDS.sleep(1);
 
-                System.out.println(Thread.currentThread().getName() + " running");
+                System.out.println(Thread.currentThread().getName() + " continued");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (BrokenBarrierException e) {

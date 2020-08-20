@@ -51,6 +51,8 @@ public class StampedLockTest {
             }
         }
 
+        // a read-only method
+        // upgrade from optimistic read to read lock
         double distanceFromOrigin() { // A read-only method
             long stamp = sl.tryOptimisticRead(); //获得一个乐观读锁
             System.out.println(Thread.currentThread().getName() + " get OptimisticReadLock, stamp : "+stamp);
@@ -68,6 +70,7 @@ public class StampedLockTest {
             return Math.sqrt(currentX * currentX + currentY * currentY);
         }
 
+        // Upgrade read lock to write lock
         void moveIfAtOrigin(double newX, double newY) { // upgrade
             // Could instead start with optimistic, not read mode
             long stamp = sl.readLock();

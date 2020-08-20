@@ -31,8 +31,8 @@ public class CountDownLatchTest1 {
     static class InnerThread extends Thread{
         public void run() {
             try {
-                Thread.sleep(1000);
                 System.out.println(Thread.currentThread().getName() + " sleep 1000ms.");
+                Thread.sleep(1000);
                 // 将CountDownLatch的数值减1
                 doneSignal.countDown();
             } catch (InterruptedException e) {

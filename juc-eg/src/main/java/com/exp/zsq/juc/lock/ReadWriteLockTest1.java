@@ -2,6 +2,7 @@ package com.exp.zsq.juc.lock;
 
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 /**
  * Created by zhaoshengqi on 2017/5/2.
  */
@@ -14,9 +15,9 @@ public class ReadWriteLockTest1 {
         User user = new User("Tommy", myCount);
 
         // 分别启动3个“读取账户金钱”的线程 和 3个“设置账户金钱”的线程
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 10; i++) {
             user.getCash();
-            user.setCash((i+1)*1000);
+            user.setCash((i + 1) * 1000);
         }
     }
 }
@@ -33,12 +34,12 @@ class User {
     }
 
     public void getCash() {
-        new Thread(()->{
+        new Thread(() -> {
             myLock.readLock().lock();
             try {
                 //System.out.println(Thread.currentThread().getName() +" getCash start");
                 myCount.getCash();
-                Thread.sleep(1);
+                Thread.sleep(0);
                 //System.out.println(Thread.currentThread().getName() +" getCash end");
             } catch (InterruptedException e) {
             } finally {
@@ -49,12 +50,12 @@ class User {
     }
 
     public void setCash(final int cash) {
-        new Thread(() ->{
+        new Thread(() -> {
             myLock.writeLock().lock();
             try {
                 //System.out.println(Thread.currentThread().getName() +" setCash start");
                 myCount.setCash(cash);
-                Thread.sleep(1);
+                Thread.sleep(1000);
                 //System.out.println(Thread.currentThread().getName() +" setCash end");
             } catch (InterruptedException e) {
             } finally {
@@ -67,7 +68,7 @@ class User {
 
 class MyCount {
     private String id;         //账号
-    private int    cash;       //账户余额
+    private int cash;       //账户余额
 
     MyCount(String id, int cash) {
         this.id = id;
@@ -83,12 +84,12 @@ class MyCount {
     }
 
     public int getCash() {
-        System.out.println(Thread.currentThread().getName() +" read cash="+ cash);
+        System.out.println(Thread.currentThread().getName() + " read cash=" + cash);
         return cash;
     }
 
     public void setCash(int cash) {
-        System.out.println(Thread.currentThread().getName() +" write cash="+ cash);
+        System.out.println(Thread.currentThread().getName() + " write cash=" + cash);
         this.cash = cash;
     }
 }

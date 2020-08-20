@@ -19,9 +19,9 @@ public class ThreadJoin {
         @Override
         public void run() {
             System.out.println(Thread.currentThread().getName() + " start");
-            while (!flag){
+            /*while (!flag){
                 break;
-            }
+            }*/
             System.out.println(Thread.currentThread().getName() + " finish");
         }
     }
