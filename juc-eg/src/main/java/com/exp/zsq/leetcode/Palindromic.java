@@ -9,10 +9,10 @@ package com.exp.zsq.leetcode;
 public class Palindromic {
     public static void main(String[] args) {
         //System.out.println(longestPalindrome2("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
-        System.out.println(longestPalindrome2(""));
+        //System.out.println(longestPalindrome2(""));
         //System.out.println(longestPalindrome2("edaabcbaads"));
         //System.out.println("ababca".lastIndexOf(98));
-
+        //System.out.println("ababca".lastIndexOf("a",3));
     }
 
     static String longestPalindrome2(String s) {
@@ -22,20 +22,20 @@ public class Palindromic {
         for (int i = 0; i < s.length(); i++) {
             boolean founded = true;
             int c = s.charAt(i);
-            int li = s.lastIndexOf(c);
+            int ri = s.lastIndexOf(c);
             int x = i;
-            int y = li;
+            int y = ri;
             while (y >= x) {
                 if (s.charAt(x++) != s.charAt(y--)) {
-                    if (li == s.indexOf(c, i + 1))
+                    if (ri == s.indexOf(c, i + 1))
                         founded = false;
-                    li = y = s.lastIndexOf(c, li - 1);
+                    ri = y = s.lastIndexOf(c, ri - 1);
                     x = i;
                 }
             }
 
-            if (founded && (li - i + 1 > high - low)) {
-                high = li;
+            if (founded && (ri - i + 1 > high - low)) {
+                high = ri;
                 low = i;
             }
             if (high - low > s.length() - i)
