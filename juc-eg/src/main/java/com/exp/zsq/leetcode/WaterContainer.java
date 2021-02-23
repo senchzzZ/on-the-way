@@ -1,6 +1,7 @@
 package com.exp.zsq.leetcode;
 
 /**
+ * https://leetcode-cn.com/problems/container-with-most-water/
  * Created by zhaoshengqi on 2018/9/6.
  */
 public class WaterContainer {
@@ -14,6 +15,7 @@ public class WaterContainer {
         int area = 0;
         int j = length - 1;
         while (j > i) {
+            //比较面积
             area = Math.max((j - i) * Math.min(height[i], height[j]), area);
             if (height[i] > height[j])
                 j--;

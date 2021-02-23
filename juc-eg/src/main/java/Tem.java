@@ -62,11 +62,9 @@ public class Tem {
 
     public static void main(String[] args)  {
 
-        List<String> list = null;
+       /* List<String> list = null;
         testParams(list);
 
-        /*TestDefaultMethod t = new TestDefaultMethodImpl();
-        t.getResult();*/
         Tem tem = new Tem();
         Integer i = 200;
         String z = "zzz";
@@ -78,7 +76,7 @@ public class Tem {
         System.out.println(z);
         System.out.println(b);
         System.out.println(tem.str);
-        System.out.println(bean);
+        System.out.println(bean);*/
 
         /*Long a = Long.MAX_VALUE;
         Long a1 = 1l;

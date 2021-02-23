@@ -7,7 +7,6 @@ package com.exp.zsq.leetcode;
  * Input: s = "PAYPALISHIRING", numRows = 4
  * Output: "PINALSIGYAHRPI"
  * PINALSIGYAHRPI
- * PINALSIGYAHRPI
  * Explanation:
  * <p>
  * P     I     N

@@ -76,6 +76,38 @@ public class QuickSort {
         return array;
     }
 
+    /**
+     * { 3, 5, 2, 6, 2,1,20,44,55,23,69,234 }
+     * { 3, 1, 2, 6, 2,5,20,44,55,23,69,234 }
+     * { 3, 1, 2, 2, 6,5,20,44,55,23,69,234 }
+     * @param array
+     * @param low
+     * @param high
+     */
+    static void quickSort2(int[] array, int low, int high){
+        if (low > high)
+            return;
+
+        int base = array[low];
+        int l = low, r = high;
+
+        while (l < r) {
+            while (l<r && array[r] >= base){
+                r--;
+            }
+
+            while (l<r && array[l] <= base){
+                l++;
+            }
+            swap(array,l,r);
+        }
+        array[low] = array[l];
+        array[l] = base;
+        quickSort2(array,low,l-1);
+        quickSort2(array,l+1,high);
+
+    }
+
     private static void quickSort1(int[] array, int low, int high) {
         if (low > high)
             return;
@@ -84,7 +116,7 @@ public class QuickSort {
         int left = low, right = high;
         mark++;
         System.out.println("正在进行第" + mark + "轮分隔，区域：" + left + "-" + right);
-        while (left != right) {
+        while (left < right) {
             while (left < right && array[right] >= base) {
                 right--;
                 System.out.println("从右往左找比" + base + "小的，指针变动：" + left + "-" + right);
@@ -94,6 +126,7 @@ public class QuickSort {
                 left++;
                 System.out.println("从左往右找比" + base + "大的，指针变动：" + left + "-" + right);
             }
+            System.out.println("swap~~~");
             swap(array, left, right);
         }
         array[low] = array[left];

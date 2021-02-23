@@ -20,8 +20,10 @@ public class FunctionTest {
         list.add(new Book(5l,"docker",4000l,"4.0"));
 
         //Function
-        Function<Book,String> names = (Book book) -> book.getName();
+        //Function<Book,String> names = (Book book) -> book.getName();
+        Function<Book,String> names = Book::getName;
         System.out.println(names.apply(list.get(0)));
+
 
     }
 

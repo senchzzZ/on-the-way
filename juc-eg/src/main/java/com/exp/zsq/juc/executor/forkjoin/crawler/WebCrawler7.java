@@ -10,8 +10,8 @@ import java.util.concurrent.ForkJoinPool;
  */
 public class WebCrawler7 implements LinkHandler {
 
+    //收集符合条件的链接
     private final Collection<String> visitedLinks = Collections.synchronizedSet(new HashSet<String>());
-    //    private final Collection<String> visitedLinks = Collections.synchronizedList(new ArrayList<>());
     private String url;
     private ForkJoinPool mainPool;
 
@@ -26,7 +26,7 @@ public class WebCrawler7 implements LinkHandler {
 
     @Override
     public void queueLink(String link) throws Exception {
-
+        //入队
     }
 
     @Override
@@ -48,6 +48,6 @@ public class WebCrawler7 implements LinkHandler {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        new WebCrawler7("https://www.dytt8.net/", 64).startCrawling();
+        new WebCrawler7("https://blog.csdn.net/", 64).startCrawling();
     }
 }

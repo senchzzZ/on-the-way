@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.RecursiveAction;
 import org.htmlparser.Parser;
+import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.LinkStringFilter;
+import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 
@@ -20,7 +22,7 @@ public class LinkFinderAction extends RecursiveAction {
     /**
      * Used for statistics
      */
-    private static final long t0 = System.nanoTime();
+    private static final long t0 = System.currentTimeMillis();
 
     public LinkFinderAction(String url, LinkHandler cr) {
         this.url = url;
@@ -29,37 +31,35 @@ public class LinkFinderAction extends RecursiveAction {
 
     @Override
     public void compute() {
-        System.out.println(getPool());
         if (!cr.visited(url)) {
             try {
                 List<RecursiveAction> actions = new ArrayList<>();
                 URL uriLink = new URL(url);
                 Parser parser = new Parser(uriLink.openConnection());
                 //NodeList list = parser.extractAllNodesThatMatch(new HasAttributeFilter("target","_blank"));
-                NodeList list = parser.extractAllNodesThatMatch(new LinkStringFilter("www.dytt8.net/html"));
+                NodeList list = parser.extractAllNodesThatMatch(new LinkStringFilter("https://blog.csdn.net/"));
 
                 for (int i = 0; i < list.size(); i++) {
                     LinkTag extracted = (LinkTag) list.elementAt(i);
-
-                    //System.out.println(extracted.getLink());
+                    System.out.println("get link : " + extracted.getLink());
 
                     if (!extracted.extractLink().isEmpty()
                             && !cr.visited(extracted.extractLink())) {
-
+                        //构建子任务
                         actions.add(new LinkFinderAction(extracted.extractLink(), cr));
                     }
                 }
+                //收集符合条件的链接
                 cr.addVisited(url);
 
-                if (cr.size() == 1500) {
-                    System.out.println("Time for visit 1500 distinct links= " + (System.nanoTime() - t0));
+                if (cr.size() == 10) {
+                    System.out.println("Time for visit 10 distinct links= " + (System.currentTimeMillis() - t0));
                 }
-
-                //invoke recursively
+                System.out.println("link size : " + cr.size());
+                //子任务入队
                 invokeAll(actions);
             } catch (Exception e) {
                 e.printStackTrace();
-                //ignore 404, unknown protocol or other server errors
             }
         }
     }
