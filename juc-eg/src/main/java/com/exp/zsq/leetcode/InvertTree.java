@@ -24,7 +24,8 @@ public class InvertTree {
         t3.setRight(t7);
 
         //new InvertTree().dfs(t1,new ArrayList<>());
-        new InvertTree().dfs(t1);
+        TreeNode.printTreeMid(t1);
+        new InvertTree().invertTree(t1);
         TreeNode.printTreeMid(t1);
 
     }

@@ -3,6 +3,19 @@ package com.exp.zsq.leetcode;
 import java.util.Arrays;
 
 /**
+ * 示例 1：
+ *
+ * 输入：nums1 = [1,3], nums2 = [2]
+ * 输出：2.00000
+ * 解释：合并数组 = [1,2,3] ，中位数 2
+ *
+ * 示例 2：
+ *
+ * 输入：nums1 = [1,2], nums2 = [3,4]
+ * 输出：2.50000
+ * 解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
+ *
+ * 链接：https://leetcode-cn.com/problems/median-of-two-sorted-arrays
  * Created by zhaoshengqi on 2018/9/3.
  */
 public class MedianSolve {
@@ -54,4 +67,25 @@ public class MedianSolve {
 
         return result;
     }
+
+    static double findMedianSortedArrays2(int[] A, int[] B) {
+        int m = A.length;
+        int n = B.length;
+        int len = m + n;
+        int left = -1, right = -1;
+        int aStart = 0, bStart = 0;
+        for (int i = 0; i <= len / 2; i++) {
+            left = right;
+            if (aStart < m && (bStart >= n || A[aStart] < B[bStart])) {
+                right = A[aStart++];
+            } else {
+                right = B[bStart++];
+            }
+        }
+        if ((len & 1) == 0)
+            return (left + right) / 2.0;
+        else
+            return right;
+    }
+
 }

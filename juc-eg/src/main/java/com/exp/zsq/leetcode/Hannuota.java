@@ -3,6 +3,16 @@ package com.exp.zsq.leetcode;
 import java.util.List;
 
 /**
+ * 示例1:
+ *
+ *  输入：A = [2, 1, 0], B = [], C = []
+ *  输出：C = [2, 1, 0]
+ * 示例2:
+ *
+ *  输入：A = [1, 0], B = [], C = []
+ *  输出：C = [1, 0]
+ *
+ * 链接：https://leetcode-cn.com/problems/hanota-lcci
  * @author zhaoshengqi
  * @date 2020/8/28 2:00 下午
  */

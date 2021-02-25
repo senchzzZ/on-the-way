@@ -2,6 +2,7 @@ package com.exp.zsq.leetcode;
 
 
 /**
+ * https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/
  * @author zhaoshengqi
  * @date 2020/8/21 10:42 上午
  */

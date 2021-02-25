@@ -7,11 +7,12 @@ import java.util.*;
  * 输入：candidates = [2,3,5], target = 8,
  * 所求解集为：
  * [
- *   [2,2,2,2],
- *   [2,3,3],
- *   [3,5]
+ * [2,2,2,2],
+ * [2,3,3],
+ * [3,5]
  * ]
  * https://leetcode-cn.com/problems/combination-sum/
+ *
  * @author zhaoshengqi
  * @date 2020/9/9 10:55 上午
  */

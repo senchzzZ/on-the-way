@@ -1,6 +1,20 @@
 package com.exp.zsq.leetcode;
 
 /**
+ * Example 1:
+ *
+ * Input: "abc"
+ * Output: 3
+ * Explanation: Three palindromic strings: "a", "b", "c".
+ *  
+ *
+ * Example 2:
+ *
+ * Input: "aaa"
+ * Output: 6
+ * Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa"
+ *
+ * 链接：https://leetcode-cn.com/problems/palindromic-substrings
  * @author zhaoshengqi
  * @date 2020/8/19 2:28 下午
  */
@@ -9,6 +23,7 @@ public class CountSubString {
     public static void main(String[] args) {
 
         System.out.println(solution("aaaa"));
+        System.out.println(solution("aaabaaa"));
         System.out.println(solution1("aaaa"));
     }
 

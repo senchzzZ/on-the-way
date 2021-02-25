@@ -19,16 +19,16 @@ public class JudgeCircle {
         for (char c : moves.toCharArray()) {
             switch (c) {
                 case 'L':
-                    x-=1;
+                    x -= 1;
                     break;
                 case 'R':
-                    x+=1;
+                    x += 1;
                     break;
                 case 'D':
-                    y-=1;
+                    y -= 1;
                     break;
                 case 'U':
-                    y+=1;
+                    y += 1;
                 default:
                     break;
             }

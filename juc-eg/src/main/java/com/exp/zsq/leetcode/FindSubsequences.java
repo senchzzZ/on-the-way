@@ -15,8 +15,8 @@ public class FindSubsequences {
 
     public static void main(String[] args) {
         FindSubsequences f = new FindSubsequences();
-        f.findSubsequences(new int[]{4,6,7,7});
-        //f.findSubsequences(new int[]{6,4,7,7});
+        List<List<Integer>> result = f.findSubsequences(new int[]{4,6,7,7});
+        System.out.println(result);
     }
 
     List<List<Integer>> res = new ArrayList<>();

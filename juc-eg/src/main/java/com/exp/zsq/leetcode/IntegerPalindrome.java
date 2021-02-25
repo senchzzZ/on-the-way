@@ -8,7 +8,8 @@ package com.exp.zsq.leetcode;
 public class IntegerPalindrome {
 
     public static void main(String[] args) {
-
+        System.out.println(isPalindrome2(1234321));
+        System.out.println(isPalindrome2(123321));
     }
 
     static boolean isPalindrome(int x) {
@@ -34,7 +35,8 @@ public class IntegerPalindrome {
             reverse = reverse * 10 + (x % 10);
             x = x / 10;
         }
-
+        System.out.println(x);
+        System.out.println(reverse);
         return reverse  == x || (reverse / 10) == x;
 
     }

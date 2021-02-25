@@ -3,6 +3,18 @@ package com.exp.zsq.leetcode;
 import lombok.Data;
 
 /**
+ * 输入:
+ *
+ *               5
+ *              / \
+ *             4   5
+ *            / \   \
+ *           1   1   5
+ * 输出:
+ *
+ * 2
+ *
+ * https://leetcode-cn.com/problems/longest-univalue-path/
  * @author zhaoshengqi
  * @date 2020/8/25 4:32 下午
  */

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
  * @author zhaoshengqi
  * @date 2020/8/26 9:23 上午
  */
@@ -12,7 +13,7 @@ public class LetterCombination {
 
     public static void main(String[] args) {
         LetterCombination lc = new LetterCombination();
-        System.out.println(lc.letterCombinations("234"));
+        System.out.println(lc.letterCombinations("2345"));
     }
 
 

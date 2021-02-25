@@ -17,9 +17,9 @@ public class MergeArray {
 
         res.add(intervals.get(0));
         for (int i = 1; i < intervals.size(); i++) {
-            // 每次新遍历到的列表与当前结果集中的最后一个区间的末尾端点进行比较
             Interval R = res.get(res.size() - 1);
             Interval L = intervals.get(i);
+            // 每次新遍历到的列表与当前结果集中的最后一个区间的末尾端点进行比较
             if (L.start <= R.end) {
                 int start = Math.min(R.start, L.start);
                 int end = Math.max(R.end, L.end);

@@ -2,10 +2,11 @@ package com.exp.zsq.leetcode;
 
 
 /**
- * [2,4,3]
- * [5,6,4]
- * [9]
- * [1,9,9,9,9,9,9,9,9,9]
+ 输入：l1 = [2,4,3], l2 = [5,6,4]
+ 输出：[7,0,8]
+ 解释：342 + 465 = 807.
+ *
+ * https://leetcode-cn.com/problems/add-two-numbers/
  * Created by zhaoshengqi on 2018/9/3.
  */
 public class LinkNodeAdd {
@@ -18,7 +19,6 @@ public class LinkNodeAdd {
 
         System.out.println(addNodeNumbers2(l1, l2));
         //System.out.println(2%10);
-
 
     }
 

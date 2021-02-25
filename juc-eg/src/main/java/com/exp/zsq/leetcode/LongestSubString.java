@@ -10,8 +10,12 @@ package com.exp.zsq.leetcode;
 public class LongestSubString {
     public static void main(String[] args) {
         long timestamp = System.nanoTime();
-        System.out.println(lengthOfLongestSubstring2("pwwkewr"));
-        System.out.println(System.nanoTime() - timestamp);
+        //System.out.println(lengthOfLongestSubstring("pwwkewr"));
+        //System.out.println(lengthOfLongestSubstring2("pwwkewr"));
+        //System.out.println(lengthOfLongestSubstring3("pwwkewr"));
+        //System.out.println(lengthOfLongestSubstring3("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring3("abcabcbadfeb"));
+        //System.out.println(System.nanoTime() - timestamp);
 
     }
 
@@ -30,7 +34,7 @@ public class LongestSubString {
                 subStr += c;
             } else {
                 int subMode = subStr.indexOf(c);
-                subStr = subStr.substring(subMode + 1, subStr.length()) + c;
+                subStr = subStr.substring(subMode + 1) + c;
                 mode = subStr.length();
             }
             maxMode = Math.max(mode, maxMode);
@@ -39,16 +43,42 @@ public class LongestSubString {
         return maxMode;
     }
 
-
+    //pwwkewr
     static int lengthOfLongestSubstring2(String s) {
         int[] index = new int[128];
         int result = 0;
-        for (int i = 0, j = 0; i < s.length(); i++){
-            j = Math.max(index[s.charAt(i)],j);//shift to last index of the repeat charactor
-            result = Math.max(result,i - j + 1);
+        for (int i = 0, j = 0; i < s.length(); i++) {
+            j = Math.max(index[s.charAt(i)], j);//shift to last index of the repeat charactor
+            System.out.println("i:" + i + " j:" + j);
+            result = Math.max(result, i - j + 1);
+            System.out.println("result:" + result);
             index[s.charAt(i)] = i + 1;
         }
         return result;
 
+    }
+
+    //abcabcbadfeb
+    static int lengthOfLongestSubstring3(String s) {
+        int length = 0;
+        int result = 0;
+        for (int i = 0, j = 0; i < s.length(); i++) {
+            int pos = s.indexOf(s.charAt(i), j);//出现重复字符的位置
+            System.out.println("pos:" + pos);
+            if (pos < i) {
+                /*if (length > result) {
+                    result = length;
+                }*/
+                result =  Math.max(length, result);
+                if (result >= s.length() - pos - 1) {
+                    return result;
+                }
+                length = i - pos - 1;
+                j = pos + 1;
+            }
+            length++;
+        }
+
+        return length;
     }
 }
