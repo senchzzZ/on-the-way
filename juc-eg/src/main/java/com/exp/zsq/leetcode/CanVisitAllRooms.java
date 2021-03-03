@@ -1,9 +1,6 @@
 package com.exp.zsq.leetcode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Input: [[1],[2],[3],[]]
@@ -61,6 +58,7 @@ public class CanVisitAllRooms {
             //todo 判断n数字的每个位都为1(n+1肯定是2的幂,则n > 0 ? (n & (n - 1)) == 0),return true
 
             //todo 简单优化,判断vis是否全为true
+            if (num == size) return true;
 
         }
         return num == size;
