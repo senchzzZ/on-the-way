@@ -42,12 +42,14 @@ public class CombinationSum {
     }
 
     private void dfs(int[] candidates, int begin, int len, int target, Deque<Integer> path, List<List<Integer>> res) {
+        //非剪枝时
+        /*if (target < 0)
+            return;*/
         // 由于进入更深层的时候，小于 0 的部分被剪枝，因此递归终止条件值只判断等于 0 的情况
         if (target == 0) {
             res.add(new ArrayList<>(path));
             return;
         }
-
         // 重点理解这里从 begin 开始搜索的语意
         for (int i = begin; i < len; i++) {
             // 重点理解这里剪枝，前提是候选数组已经有序，

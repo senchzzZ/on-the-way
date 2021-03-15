@@ -8,14 +8,17 @@ package com.exp.zsq.leetcode;
 public class IntegerPalindrome {
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome2(1234321));
-        System.out.println(isPalindrome2(123321));
+        //System.out.println(isPalindrome2(1234321));
+        //System.out.println(isPalindrome2(123321));
+        System.out.println(isPalindrome2(121));
     }
 
     static boolean isPalindrome(int x) {
-        String s = String.valueOf(x);
-        if (s.length() == 1)
+        if (x < 10 && x >= 0)
             return true;
+        if (x < 0 || x % 10 == 0)
+            return false;
+
         StringBuilder sb = new StringBuilder(String.valueOf(x));
         if (sb.toString().equals(sb.reverse().toString()))
             return true;

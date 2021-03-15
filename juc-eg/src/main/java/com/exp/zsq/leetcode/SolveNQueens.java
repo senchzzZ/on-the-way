@@ -13,7 +13,7 @@ import java.util.List;
 public class SolveNQueens {
     public static void main(String[] args) {
 
-        System.out.println(new SolveNQueens().solveNQueens(4));
+        System.out.println(new SolveNQueens().solveNQueens(8));
     }
 
     public List<List<String>> solveNQueens(int n) {

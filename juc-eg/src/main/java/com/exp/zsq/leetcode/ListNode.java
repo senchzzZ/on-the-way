@@ -23,12 +23,12 @@ public class ListNode {
         this.next = ln;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         String result = "";
         for (ListNode ln = this; ln != null; ln = ln.next) {
             result += ln.val;
         }
         return result;
-    }
+    }*/
 }

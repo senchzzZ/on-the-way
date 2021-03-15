@@ -1,6 +1,5 @@
 package com.exp.zsq.leetcode;
 
-import java.util.Stack;
 
 /**
  * 反转链表

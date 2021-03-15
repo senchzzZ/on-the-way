@@ -3,6 +3,16 @@ package com.exp.zsq.leetcode;
 import java.util.*;
 
 /**
+ * 示例 1：
+ *
+ * 输入：[["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
+ * 输出：["JFK", "MUC", "LHR", "SFO", "SJC"]
+ *
+ * 输入：[["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+ * 输出：["JFK","ATL","JFK","SFO","ATL","SFO"]
+ * 解释：另一种有效的行程是 ["JFK","SFO","ATL","JFK","ATL","SFO"]。但是它自然排序更大更靠后。
+ *
+ *
  * https://leetcode-cn.com/problems/reconstruct-itinerary/
  * @author zhaoshengqi
  * @date 2020/8/27 4:33 下午
