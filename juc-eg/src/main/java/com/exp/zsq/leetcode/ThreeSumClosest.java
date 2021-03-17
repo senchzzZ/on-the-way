@@ -3,6 +3,11 @@ package com.exp.zsq.leetcode;
 import java.util.Arrays;
 
 /**
+ * 最接近目标的三数之和
+ * 输入：nums = [-1,2,1,-4], target = 1
+ * 输出：2
+ * 解释：与 target 最接近的和是 2 (-1 + 2 + 1 = 2) 。
+ *
  * https://leetcode-cn.com/problems/3sum-closest/
  *
  * @author zhaoshengqi
@@ -14,7 +19,7 @@ public class ThreeSumClosest {
 
     }
 
-    public int threeSumClosest(int[] nums, int target) {
+    static int threeSumClosest(int[] nums, int target) {
         if (nums.length < 3)
             return 0;
 

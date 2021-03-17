@@ -1,8 +1,8 @@
 package com.exp.zsq.leetcode;
 
-import lombok.Data;
 
 /**
+ * 最长同值路径
  * 输入:
  *
  *               5
@@ -65,17 +65,6 @@ public class LongestUnivaluePath {
         res = Math.max(res, left + right);
         return Math.max(left,right);
 
-    }
-
-    @Data
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 
 }
