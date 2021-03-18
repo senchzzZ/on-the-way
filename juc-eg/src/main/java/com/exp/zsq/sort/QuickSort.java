@@ -22,12 +22,6 @@ public class QuickSort {
             int temp = array[a];
             array[a] = array[b];
             array[b] = temp;
-            // 找到符合的，对调
-            System.out.println("对调" + array[a] + "与" + array[b] + ",得到");
-            for (int i : array) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
         }
     }
 

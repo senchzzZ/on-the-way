@@ -16,7 +16,7 @@ import java.util.LinkedList;
 public class ReorderList {
 
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4))));
+        ListNode l1 = new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,new ListNode(5,new ListNode(6,new ListNode(7)))))));
         reorderList(l1);
         System.out.println(l1);
     }
