@@ -1,6 +1,7 @@
 package com.exp.zsq.leetcode;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * 输入：s = "()[]{}"
@@ -22,10 +23,10 @@ public class KuohaoValid {
     }
 
     static boolean isValid(String s){
-        if (s == null || s.isEmpty())
+        if (s == null || s.isEmpty() || s.length() % 2 == 1)//奇数
             return false;
-        Stack<Character> stack = new Stack<>();
 
+        Deque<Character> stack = new ArrayDeque<>();
         for (char c : s.toCharArray()) {
             if (c == '(') {
                 stack.push(')');

@@ -2,6 +2,7 @@ package com.exp.zsq.leetcode;
 
 
 /**
+ * 找到树的最小节点
  * @author zhaoshengqi
  * @date 2020/8/27 4:56 下午
  */

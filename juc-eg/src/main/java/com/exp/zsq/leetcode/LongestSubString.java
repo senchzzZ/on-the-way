@@ -11,10 +11,10 @@ public class LongestSubString {
     public static void main(String[] args) {
         long timestamp = System.nanoTime();
         //System.out.println(lengthOfLongestSubstring("pwwkewr"));
-        //System.out.println(lengthOfLongestSubstring2("pwwkewr"));
+        System.out.println(lengthOfLongestSubstring2("pwwkewr"));
         //System.out.println(lengthOfLongestSubstring3("pwwkewr"));
         //System.out.println(lengthOfLongestSubstring3("abcabcbb"));
-        System.out.println(lengthOfLongestSubstring3("abcabcbadfeb"));
+        //System.out.println(lengthOfLongestSubstring3("abcabcbadfeb"));
         //System.out.println(System.nanoTime() - timestamp);
 
     }
