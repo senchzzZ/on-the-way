@@ -28,6 +28,34 @@ public class ZigzagConversion {
         System.out.println(str2==str2.intern());*/
     }
 
+    /**
+     * 按行访问
+     * 时间On
+     * 空间On
+     *
+     * @param s
+     * @param numRows
+     * @return
+     */
+    static String convert2(String s, int numRows) {
+        if (numRows == 1)
+            return s;
+
+        StringBuilder ret = new StringBuilder();
+        int n = s.length();
+        int cycleLen = 2 * numRows - 2;
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j + i < n; j += cycleLen) {
+                ret.append(s.charAt(j + i));
+                if (i != 0 && i != numRows - 1 && j + cycleLen - i < n)
+                    ret.append(s.charAt(j + cycleLen - i));
+            }
+        }
+        return ret.toString();
+    }
+
+
     static String convert(String s, int numRows) {
         if (numRows <= 1)
             return s;
