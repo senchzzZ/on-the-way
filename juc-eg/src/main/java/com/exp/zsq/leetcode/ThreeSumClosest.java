@@ -24,23 +24,23 @@ public class ThreeSumClosest {
             return 0;
 
         Arrays.sort(nums);
-        int ans = nums[0] + nums[1] + nums[2];
+        int res = nums[0] + nums[1] + nums[2];
         for (int i = 0; i < nums.length; i++) {
             int start = i + 1, end = nums.length - 1;
             while (start < end) {
-                int sum = nums[start] + nums[end] + nums[i];
+                int sum = nums[i] + nums[start] + nums[end];
 
-                if (Math.abs(target - sum) < Math.abs(target - ans))//找到最接近的
-                    ans = sum;
+                if (Math.abs(target - sum) < Math.abs(target - res))//找到最接近的
+                    res = sum;
                 if (sum > target)//太大,向前找
                     end--;
                 else if (sum < target)//太小,向后找
                     start++;
                 else
-                    return ans;
+                    return res;
             }
         }
-        return ans;
+        return res;
 
     }
 }

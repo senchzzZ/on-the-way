@@ -25,7 +25,7 @@ public class LetterCombination {
         if (digits == null)
             return null;
         if (digits.length() == 1) {
-            return Arrays.asList(map[Integer.parseInt(digits.charAt(0) + "")]);
+            return Arrays.asList(map[Integer.parseInt(digits)]);
         }
         List<String> res = new ArrayList<>();
         List<String> temp = new ArrayList<>();

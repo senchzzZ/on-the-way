@@ -12,13 +12,13 @@ import java.util.List;
  * @author zhaoshengqi
  * @date 2021/3/3 9:36 上午
  */
-public class MergeTwoLists {
+public class MergeTwoListNode {
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1,new ListNode(2,new ListNode(4)));
         ListNode l2 = new ListNode(1,new ListNode(3,new ListNode(4)));
 
-        ListNode listNode = new MergeTwoLists().mergeTwoLists(l1,l2);
-        ListNode listNode2 = new MergeTwoLists().mergeTwoLists2(l1,l2);
+        ListNode listNode = new MergeTwoListNode().mergeTwoLists(l1,l2);
+        ListNode listNode2 = new MergeTwoListNode().mergeTwoLists2(l1,l2);
         System.out.println(listNode);
         System.out.println(listNode2);
     }

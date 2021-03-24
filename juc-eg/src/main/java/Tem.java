@@ -61,6 +61,19 @@ public class Tem {
     }
 
     public static void main(String[] args)  {
+        /*String str1 = "what";
+        String str2 = str1 + " a nice day";
+        System.out.println("what a nice day".equals(str2));
+        System.out.println("what a nice day" == str2);*/
+//        String str1 = "what a nice day";
+//        String str2 = new String("what a nice day");
+//        System.out.println(str1.equals(str2));
+//        System.out.println(str1 == str2);
+        String str1 = "what";
+        String str2 = str1.concat(" a nice day");
+        System.out.println("what a nice day".equals(str2));
+        System.out.println("what a nice day" == str2);
+        System.out.println("what a nice day"==str2.intern());
 
        /* List<String> list = null;
         testParams(list);

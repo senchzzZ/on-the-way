@@ -14,6 +14,11 @@ public class FindRepeatNumber {
         System.out.println(findRepeatNumber(nums));
     }
 
+    /**
+     * 时间On 空间On
+     * @param nums
+     * @return
+     */
     static int findRepeatNumber(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int num : nums) {

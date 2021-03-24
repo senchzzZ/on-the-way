@@ -8,7 +8,7 @@ import java.util.Comparator;
  * @author zhaoshengqi
  * @date 2021/1/26 4:12 下午
  */
-public class MergeArray {
+public class MergeInterval {
 
     public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
         ArrayList<Interval> res = new ArrayList<>();

@@ -50,23 +50,23 @@ public class LongestSubPalindromic {
             return null;
         if (s.length() == 1)
             return s;
-        String longestSubStr = "";
+        String res = "";
 
         for (int i = 0; i < s.length(); i++) {
             String c = s.charAt(i) + "";
             for (int j = s.lastIndexOf(c); j >= i; ) {
-                String subStr = s.substring(i, j + 1);
-                String reverseStr = new StringBuffer(subStr).reverse().toString();
-                if (reverseStr.equals(subStr) && subStr.length() > longestSubStr.length()) {
-                    longestSubStr = subStr;
+                String sub = s.substring(i, j + 1);
+                String reverseStr = new StringBuffer(sub).reverse().toString();
+                if (reverseStr.equals(sub) && sub.length() > res.length()) {
+                    res = sub;
                     break;
                 }
                 j = s.lastIndexOf(c, j - 1);
             }
-            if (longestSubStr.length() > (s.length() - i))
+            if (res.length() > (s.length() - i))
                 break;
 
         }
-        return longestSubStr;
+        return res;
     }
 }

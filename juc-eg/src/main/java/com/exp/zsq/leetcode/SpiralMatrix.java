@@ -40,6 +40,7 @@ public class SpiralMatrix {
             for (int i = l; i <= r; i++)//左到右
                 res.add(matrix[t][i]);
             if (++t > b) break;
+
             for (int i = t; i <= b; i++)//上到下
                 res.add(matrix[i][r]);
             if (--r < l) break;
@@ -47,6 +48,7 @@ public class SpiralMatrix {
             for (int i = r; i >= l; i--)//右到左
                 res.add(matrix[b][i]);
             if (--b < t) break;
+
             for (int i = b; i >= t; i--)//下到上
                 res.add(matrix[i][l]);
             if (++l > r) break;

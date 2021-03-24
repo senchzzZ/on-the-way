@@ -61,17 +61,16 @@ public class LongestSubString {
     //abcabcbadfeb
     static int lengthOfLongestSubstring3(String s) {
         int length = 0;
-        int result = 0;
+        int res = 0;
         for (int i = 0, j = 0; i < s.length(); i++) {
             int pos = s.indexOf(s.charAt(i), j);//出现重复字符的位置
-            System.out.println("pos:" + pos);
             if (pos < i) {
                 /*if (length > result) {
                     result = length;
                 }*/
-                result =  Math.max(length, result);
-                if (result >= s.length() - pos - 1) {
-                    return result;
+                res =  Math.max(length, res);
+                if (res >= s.length() - pos - 1) {
+                    return res;
                 }
                 length = i - pos - 1;
                 j = pos + 1;
